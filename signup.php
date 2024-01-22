@@ -31,33 +31,84 @@
   </div>
   <div class="container2">
     <h2 class="title">SIGN UP</h2>
+    <?php
+      if (isset($_POST["submit"])){
+        $firstName = $_POST["firstname"];
+        $lastName = $_POST["lastname"];
+        $email = $_POST["email"];
+        $password = $_POST["password"]; 
+        $passwordConfirmation = $_POST["confirm_password"];
+        $userType = "user";
+
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $errors = array();
+        
+        if (empty($firstName) OR empty($lastName) OR empty($email) OR empty($password) OR empty($passwordConfirmation)){
+          array_push($errors,"All fields are required");
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+          array_push($errors,"Email is not valid");
+        }
+        if (strlen($password)<8){
+          array_push($errors,"Password must be atleast 8 characters long");
+        }
+        if ($password!==$passwordConfirmation){
+          array_push($errors,"Passwords do not match");
+        }
+        require_once "database.php";  
+        $sql = "SELECT * FROM signup WHERE email = '$email'";
+        $result = mysqli_query($conn, $sql);
+        $rowCount = mysqli_num_rows($result);
+        if ($rowCount> 0){
+          array_push($errors,"Email already exists");
+        }
+        if (count($errors)> 0){
+          foreach($errors as $error){
+            echo "<div class='alert alert danger'>$error</div>";
+          } 
+        }
+        else{
+          $sql = "INSERT INTO signup (firstName, lastName, email, password, userType) VALUES (?,?,?,?,?)";
+          $stmt = mysqli_stmt_init($conn);
+          $prepareStmt = mysqli_stmt_prepare($stmt,$sql);
+          if ($prepareStmt){
+            mysqli_stmt_bind_param($stmt,"sssss",$firstName,$lastName,$email,$passwordHash,$userType);
+            mysqli_stmt_execute($stmt);
+        } 
+          else{
+            die("Something went wrong!");
+          }
+        
+      }
+    }
+?>
     <form class="form" action="signup.php" method="post">
     <div class="flex">
         <label>
-            <input required="" placeholder="" type="text" class="input">
+            <input required="" placeholder="" type="text" class="input" name="firstname">
             <span>Firstname</span>
         </label>
 
         <label>
-            <input required="" placeholder="" type="text" class="input">
+            <input required="" placeholder="" type="text" class="input" name="lastname">
             <span>Lastname</span>
         </label>
     </div>  
             
     <label>
-        <input required="" placeholder="" type="email" class="input">
+        <input required="" placeholder="" type="email" class="input" name="email">
         <span>Email</span>
     </label> 
         
     <label>
-        <input required="" placeholder="" type="password" class="input">
+        <input required="" placeholder="" type="password" class="input" name="password">
         <span>Password</span>
     </label>
     <label>
-        <input required="" placeholder="" type="password" class="input">
+        <input required="" placeholder="" type="password" class="input" name="confirm_password">
         <span>Confirm password</span>
     </label>
-    <button class="submit">SIGN UP</button>
+    <button class="submit" type="submit" name="submit">SIGN UP</button>
     </form>
   </div>
 </body>

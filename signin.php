@@ -31,17 +31,38 @@
   </div>
   <div class="container2">
     <h2 class="title">LOG IN</h2>
+    <?php
+    if (isset($_POST["signin"])){
+      $email= $_POST["email"];
+      $password= $_POST["password"];
+      require_once "database.php";
+      $sql="SELECT * FROM signup WHERE email = '$email'";
+      $result=mysqli_query($conn,$sql);
+      $user=mysqli_fetch_array($result, MYSQLI_ASSOC);
+      if($user){
+        if (password_verify($password,$user["password"])){
+          header("Location: userhome.php") ;
+          die();
+        }
+        else{
+          echo "Password does not match";
+        }
+      }
+      else{
+        echo "Email does not match";
+      }
+    }
+    ?>
     <form class="form" action="signin.php" method="post">
     <label>
-        <input required="" placeholder="" type="email" class="input">
+        <input required="" placeholder="" type="email" class="input" name="email" class="form-control">
         <span>Email</span>
     </label> 
-        
     <label>
-        <input required="" placeholder="" type="password" class="input">
+        <input required="" placeholder="" type="password" class="input" name="password" class="form-control">
         <span>Password</span>
     </label>
-    <button class="submit">SIGN IN</button>
+    <button class="submit" type="submit" value="signin" name="signin">SIGN IN</button>
     </form>
   </div>
 </body>
