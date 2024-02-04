@@ -30,29 +30,29 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="adminDashboard.html">Home</a>
+                    <a href="adminDashboard.php">Home</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="aboutAdmin.php">About</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
                         <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teachers</a>
                         <ul class="collapse list-unstyled" id="teacherSubmenu">
                             <li>
-                              <a href="external.html">External</a>
+                              <a href="external.php">External</a>
                             </li>
                             <li>
-                              <a href="internal.html">Internal</a>
+                              <a href="internal.php">Internal</a>
                             </li>
                         </ul>
                         <li>
-                            <a href="staff.html">Staff</a>
+                            <a href="staff.php">Staff</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="contactAdmin.php">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -83,7 +83,27 @@
                     </div>
                 </div>
             </nav>
-            
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://kjsit.somaiya.edu.in/assets/kjsieit/images/infra/blg.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://kjsit.somaiya.edu.in/assets/kjsieit/images/infra/two.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://www.somaiya.edu/upload_file/images20/images/New%20Project%20(60).jpg" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
             <div class="description-container">
             <p>This second Engineering College established by the Somaiya Trust in the year 2001, at Ayurvihar campus, Sion, was initiated with a first batch of 180 undergraduate students and three branches in Engineering—namely Electronics and Telecommunication Engineering, Computer Engineering, and Information Technology.</p>
 
@@ -95,8 +115,8 @@
                     
             Additionally, an undergraduate engineering program - Artificial Intelligence and Data Science - has been offered by KJSIT from the academic year 2020-21 with the intake capacity of 60 seats leading the total intake increased to 360. KJSIT is constantly identifying and developing latest and nascent technologies such as Artificial Intelligence, Machine Learning, Deep Learning and Block Chain Technology, etc. for enhancing student learning and growth.
             </p>
-                    <a href="https://kjsit.somaiya.edu.in/" style="color: blue;"><i class="bi bi-box-arrow-up-right"></i> KJ Somaiya Institute Of Technology</a>
-        </div>
+                    <a href="https://kjsit.somaiya.edu.in/" style="color: blue;"> KJ Somaiya Institute Of Technology</a>
+            </div>
         </div>
     </div>
 

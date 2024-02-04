@@ -17,7 +17,7 @@
   <div class="header">
     <img src="logo1.png">
     <span id="college"> K. J. SOMAIYA INSTITUTE OF TECHNOLOGY</span>
-    <span id="address">K. J. Somaiya Institue Of Technology, Somaiya, Sion, Mumbai, Maharashtra 400022</span>
+    <span id="address">K. J. Somaiya Institute Of Technology, Somaiya, Sion, Mumbai, Maharashtra 400022</span>
   </div>
   <hr>
   <div class="container1">

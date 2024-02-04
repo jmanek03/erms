@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: #e0dfdf;
 }
 
 p {
@@ -27,7 +27,7 @@ a, a:hover, a:focus {
     padding: 15px 10px;
     background-color: #923434;
     border: none;
-    border-radius: 0;
+    border-radius: 2px;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
@@ -88,7 +88,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.3em;
+    font-size: 1.4em;
     display: block;
 }
 #sidebar ul li a:hover {
@@ -190,13 +190,20 @@ a.article, a.article:hover {
 
 .description-container{
     box-shadow: 0px 0px 25px 3px rgba(84,76,84,0.79);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 30px;
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
-
+    margin-top: 150px;
 }
+.card__image {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    margin-top: 20px;    
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -228,5 +235,4 @@ a.article, a.article:hover {
     #sidebarCollapse.active span:last-of-type {
         transform: rotate(-45deg) translate(1px, -1px);
     }
-
 }
