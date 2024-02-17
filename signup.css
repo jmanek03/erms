@@ -117,7 +117,7 @@ box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.6);
   height:448px;
   width:448px;
   border-radius:10px;
-  right: 32.5%;
+  right: 35%;
   margin-right: -224px;
   box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.6);
   }
@@ -232,6 +232,10 @@ box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.6);
   .submit:hover{
     background-color: rgb(75, 75, 75);
   }
+
+  .hide {
+    display: none!important;
+}
   
   @keyframes pulse {
     from {
