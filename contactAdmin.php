@@ -85,7 +85,7 @@
             </nav>
             <div class="card-deck">
                 <div class="card">
-                    <h4 class="card-title">GUIDED BY</h4>
+                    <h4 class="card-title text-center">GUIDED BY</h4>
                     <img class="card-img-top" src="..." alt="Card image">
                     <div class="card-body">
                         <a href="mailto:jayashreek@somaiya.edu "><img src="email_black_24dp.svg"> jayashreek@somaiya.edu</a>
@@ -95,9 +95,12 @@
                     </div>
                 </div>
                 <div class="card">
-                    <h4 class="card-title">DEVELOPED BY</h4>
-                    <img class="card-img-top" src="photo.jpg" alt="Card image">
+                    <h4 class="card-title text-center">DEVELOPED BY</h4>
+                    <div class="text-center">
+                        <img class="card-img-top rounded-circle mb-3" style="width:170px;height:200px;" src=".." alt="Card image">
+                    </div>
                     <div class="card-body">
+                        <p class="text-muted">Front-End Developer <span class="badge badge-dark">INTERMEDIATE</span></p>
                         <a href="mailto:j.manek@somaiya.edu "><img src="email_black_24dp.svg"> j.manek@somaiya.edu</a><br><br>
                         <a href="https://www.linkedin.com/in/jay-manek-840b15228/"><img src="linkedin.svg"> Jay Manek</a>
                     </div>
@@ -106,9 +109,12 @@
                     </div>
                 </div>
                 <div class="card">
-                    <h4 class="card-title">DEVELOPED BY</h4>
-                    <img class="card-img-top" src="..." alt="Card image">
+                    <h4 class="card-title text-center">DEVELOPED BY</h4>
+                    <div class="text-center">
+                        <img class="card-img-top rounded-circle mb-3" style="width:170px;height:200px;" src="..." alt="Card image">
+                    </div>
                     <div class="card-body">
+                        <p class="text-muted">Back-End Developer <span class="badge badge-dark">INTERMEDIATE</span></p>
                         <a href="mailto:arrya.bhaik@somaiya.edu "><img src="email_black_24dp.svg"> arrya.bhaik@somaiya.edu</a><br><br>
                         <a href="https://www.linkedin.com/in/arrya-bhaik-283518258/"><img src="linkedin.svg"> Arrya Bhaik</a>
                     </div>
