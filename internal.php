@@ -72,7 +72,8 @@
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
-                    <h2>
+                    <img src="favicon.ico">
+                    <h2 class="header mx-3">
                         K. J. SOMAIYA INSTITUTE OF TECHNOLOGY
                     </h2>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
