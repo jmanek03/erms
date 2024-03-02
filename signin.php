@@ -69,7 +69,7 @@
       $user=mysqli_fetch_array($result, MYSQLI_ASSOC);
       if($user){
         if (password_verify($password,$user["password"])){
-          header("Location: userhome.php") ;
+          header("Location: userDashboard.php") ;
           die();
         }
         else{
