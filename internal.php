@@ -1,3 +1,42 @@
+<?php
+require_once 'database.php';
+
+$conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+
+if (isset($_POST['submit'])) {
+    $DATE = $_POST["DATE"];
+    $SCHEME = $_POST["SCHEME"];
+    $SEMESTER = $_POST["SEMESTER"];
+    $SUBJECT = $_POST["SUBJECT"];
+    $DIVISION = $_POST["DIVISION"];
+    $BATCH = $_POST["BATCH"];
+    $TEACHER = $_POST["TEACHER"];
+    $EXAM = $_POST["EXAM"];
+    $PARTICULARS = $_POST["PARTICULARS"];
+    $MARKS = $_POST["MARKS"];
+    $NO_OF_STUDENTS = $_POST["NO_OF_STUDENTS"];
+    $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
+    $TOTAL = $_POST["TOTAL"];
+
+    $sql = "INSERT INTO internal ('t_id','academic year', 'scheme', 'semester', 'subject', 'division', 'batch', 't_name', 'exam', 'particular', 'max_marks', 'no_of_students', 'rs_per_students', 'total') VALUES ('',?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_stmt_init($conn);
+    $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
+
+    if ($prepareStmt) {
+        mysqli_stmt_bind_param($stmt, "sssssssssiiii", $DATE, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $TEACHER, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
+        mysqli_stmt_execute($stmt);
+    } else {
+        die("Something went wrong!");
+    }
+}
+
+echo "Form submitted";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -86,7 +125,7 @@
                 </div>
             </nav>
             <div class="container">
-                <form class="form" action="https://api.sheetmonkey.io/form/3HfdpQbhU6X2ME3SGyVxTg" method="post" name="remuneration-form">
+                <form class="form" action=internal.php method="post" name="remuneration-form">
                     <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 300px;">Scheme:</label><br>
                     <input type="year" name="DATE" id="date" required>
                     <select id="scheme" name="SCHEME"required style="margin-left: 83px;">
@@ -168,15 +207,15 @@
                     <input type="marks" name="MARKS" id="max-marks" required>
                     <br><hr style="width: 640px; color: rgb(0, 0, 0);">
                     <label for="Remuneration">Number of Students:</label><br>
-                    <input type="students" name="NO. OF STUDENTS" id="noofstudents" oninput="calculateTotal()" required>
+                    <input type="students" name="NO_OF_STUDENTS" id="noofstudents" oninput="calculateTotal()" required>
                     <br><hr>
                     <label for="Remuneration">Rs. Per Student:</label><br>
-                    <input type="rs" name="RS. PER STUDENT" id="rsperstudent" oninput="calculateTotal()" required>
+                    <input type="rs" name="RS_PER_STUDENT" id="rsperstudent" oninput="calculateTotal()" required>
                     <br><hr>
                     <label for="Remuneration">TOTAL:</label><br>
                     <input type="total" name="TOTAL" id="total" required>
                     <input type="hidden" name="CREATED" value="x-sheetmonkey-current-date-time" />
-                    <input type="submit" id="submit"><br>
+                    <input type="submit" name='submit' id="submit"><br>
                 </form>
             </div>
             <script src="admin.js"></script>
