@@ -7,6 +7,7 @@
     box-shadow: 20px 10px 51px -24px rgba(0,0,0,1);
     border-radius: 5px;
   }
+  
  .form {
      color: rgb(0, 0, 0);
      font-size: 20px;
@@ -26,6 +27,7 @@
      border: 2px solid #727171;
      font-size: 12px;
    }
+
    #resadd,#profadd{
     width: 100%;
      height: 40%;
@@ -36,6 +38,7 @@
      border: 2px solid #727171;
      font-size: 12px;
    }
+
    #bname:focus,#bank:focus,#branch:focus,#IFSC:focus,#acno:focus,#ext_name:focus,#ext_clg:focus,#phno:focus,#resadd:focus,#profadd:focus,#exam:focus, #teacher:focus,#division:focus, #batch:focus, #scheme:focus, #semester:focus, #particulars:focus, #max-marks:focus, #noofstudents:focus, #rsperstudent:focus, #date:focus,#name:focus, #subject:focus {
      outline: none;
      border: 3px solid #000000;
@@ -88,7 +91,6 @@
     margin-top: -1px;
   }
   
-  
   #submit:hover{
     padding: 15px 60px 15px 20px;
   }
@@ -98,17 +100,20 @@
     opacity: 1;
     right: 15px;
   }
+
    p {
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
     color: beige;
    }
+
    .input{
     width: 40px;
     text-align: center;
     height:30px;
     font-size: 16px;
    }
+
    .acc_no{
     width: 30px;
     text-align: center;

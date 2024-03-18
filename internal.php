@@ -6,7 +6,6 @@ $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
 
 if (isset($_POST['submit'])) {
     $DATE = $_POST["DATE"];
@@ -23,19 +22,24 @@ if (isset($_POST['submit'])) {
     $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
     $TOTAL = $_POST["TOTAL"];
 
-    $sql = "INSERT INTO internal ('t_id','academic year', 'scheme', 'semester', 'subject', 'division', 'batch', 't_name', 'exam', 'particular', 'max_marks', 'no_of_students', 'rs_per_students', 'total') VALUES ('',?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO internal (`academic year`, `scheme`, `semester`, `subject`, `division`, `batch`, `t_name`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_students`, `total`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
-    $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
 
-    if ($prepareStmt) {
-        mysqli_stmt_bind_param($stmt, "sssssssssiiii", $DATE, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $TEACHER, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
-        mysqli_stmt_execute($stmt);
-    } else {
-        die("Something went wrong!");
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
     }
+
+    mysqli_stmt_bind_param($stmt, "sssssssssiiii", $DATE, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $TEACHER, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
+    $t_id=null;
+
+    if (!mysqli_stmt_execute($stmt)) {
+        die("SQL execute statement failed: " . mysqli_stmt_error($stmt));
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
 }
 
-echo "Form submitted";
 ?>
 <!DOCTYPE html>
 <html>
@@ -126,7 +130,7 @@ echo "Form submitted";
             </nav>
             <div class="container">
                 <form class="form" action=internal.php method="post" name="remuneration-form">
-                    <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 300px;">Scheme:</label><br>
+                    <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 240px;">Scheme:</label><br>
                     <input type="year" name="DATE" id="date" required>
                     <select id="scheme" name="SCHEME"required style="margin-left: 83px;">
                         <option value="">--Choose a Scheme--</option>
@@ -152,7 +156,7 @@ echo "Form submitted";
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Division:</label><label for="Remuneration" style="margin-left: 350px;">Batch:</label><br>
+                    <label for="Remuneration">Division:</label><label for="Remuneration" style="margin-left: 292px;">Batch:</label><br>
                     <select id="division" name="DIVISION" required onchange="get(this.id,'batch')">
                         <option value="">--Choose a Division--</option>
                         <option value="A">A</option>
@@ -191,7 +195,7 @@ echo "Form submitted";
                         <option value="Archana Kshirsagar">Archana Kshirsagar</option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 370px;">Choose a Particular:</label><br>
+                    <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 310px;">Choose a Particular:</label><br>
                     <select name="EXAM" id="exam" required onchange="select(this.id,'particulars')">
                         <option value="">--Select--</option>
                         <option value="Regular">Regular</option>

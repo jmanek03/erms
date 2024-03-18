@@ -1,3 +1,59 @@
+<?php
+require_once 'database.php';
+
+$conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $NAME = $_POST["NAME"];
+    $COLLEGE = $_POST["COLLEGE"];
+    $PHNO = $_POST["PHONE"];
+    $RES_ADDR = $_POST["RES_ADDRESS"];
+    $PROF_ADDR = $_POST["PROF_ADDRESS"];
+    $BENEFICIARY = $_POST["BENEFICIARY"];
+    $BANK = $_POST["BANK"];
+    $BRANCH = $_POST["BRANCH"];
+    $IFSC = $_POST["IFSC"];
+    $ACC_NO = $_POST["ACC_NO"];
+    $YEAR = $_POST["YEAR"];
+    $SCHEME = $_POST["SCHEME"];
+    $SEMESTER = $_POST["SEMESTER"];
+    $SUBJECT = $_POST["SUBJECT"];
+    $DIVISION = $_POST["DIVISION"];
+    $BATCH = $_POST["BATCH"];
+    $EXAM = $_POST["EXAM"];
+    $PARTICULARS = $_POST["PARTICULARS"];
+    $MARKS = $_POST["MARKS"];
+    $NO_OF_STUDENTS = $_POST["NO_OF_STUDENTS"];
+    $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
+    $AMT1= $_POST["AMT1"];
+    $NO_OF_DAYS = $_POST["NO_OF_DAYS"];
+    $TRAV_PER_DAY = $_POST["TRAV_PER_DAY"];
+    $AMT2 = $_POST["TRAV_ALLOWANCE"];
+    $TOTAL = $_POST["TOTAL"];
+
+    $sql = "INSERT INTO external ( `name`, `college_name`, `phno`, `res_addr`, `prof_addr`, `beneficiary`, `bank`, `branch`, `ifsc`, `acc_no`, `academic_year`, `scheme`, `semester`, `subject`, `division`, `batch`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_student`, `amount`, `no_of_days`, `trav_allow_per_day`, `trav_allowance`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssisssssssssssssssiiiiiiii", $NAME, $COLLEGE, $PHNO, $RES_ADDR, $PROF_ADDR, $BENEFICIARY, $BANK, $BRANCH, $IFSC, $ACC_NO, $YEAR, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $AMT1, $NO_OF_DAYS, $TRAV_PER_DAY, $AMT2, $TOTAL);
+    $e_id=null;
+
+    if (!mysqli_stmt_execute($stmt)) {
+        die("SQL execute statement failed: " . mysqli_stmt_error($stmt));
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -84,63 +140,35 @@
                 </div>
             </nav>
             <div class="container">
-                <form class="form" action="https://api.sheetmonkey.io/form/cJUsyK58LBpEB8cHgDou7i" method="post" name="remuneration-form">
+                <form class="form" action=external.php method="post" name="remuneration-form">
                     <label for="Remuneration">Name of External Examiner:</label><br>
                     <input type="ext_name" name="NAME" id="ext_name" >
                     <br><hr>
-                    <label for="Remuneration">College:</label><label for="Remuneration" style="margin-left: 350px;">Phone number:</label><br>
+                    <label for="Remuneration">College:</label><label for="Remuneration" style="margin-left: 300px;">Phone number:</label><br>
                     <input type="ext_clg" name="COLLEGE" id="ext_clg" >
-                    <input type="phno" name="PHONE NUMBER" id="phno" style="margin-left: 83px;" maxlength="10" >
+                    <input type="phno" name="PHONE" id="phno" style="margin-left: 83px;" maxlength="10" >
                     <br><hr>
                     <label for="Remuneration">Address (Residential):</label><br>
-                    <input type="resadd" name="ADDRESS(RESIDENTIAL)" id="resadd">
+                    <input type="resadd" name="RES_ADDRESS" id="resadd">
                     <br><hr>
                     <label for="Remuneration">Address (Professional):</label><br>
-                    <input type="profadd" name="ADDRESS(PROFESSIONAL)" id="profadd">
+                    <input type="profadd" name="PROF_ADDRESS" id="profadd">
                     <br><hr>
                     <label for="Remuneration">Benefeciary Name:</label><br>
-                    <input type="name" name="BENEFICIARY NAME" id="bname">
+                    <input type="name" name="BENEFICIARY" id="bname">\
                     <br><hr>
-                    <label for="Remuneration">Bank Name:</label><label style="margin-left:325px"for="Remuneration">Branch Address:</label><br>
+                    <label for="Remuneration">Bank Name:</label><label style="margin-left:280px"for="Remuneration">Branch Address:</label><br>
                     <input type="name" name="BANK" id="bank">
                     <input type="name" name="BRANCH" id="branch" style="margin-left:100px">
                     <br><hr>
                     <label for="Remuneration">IFSC Code:</label><br>
-                        <div id="inputs" class="inputs" >
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE">
-                            <input class="input" type="text" inputmode="numeric" maxlength="1" name="IFSC CODE"/>    
-                        </div><br><hr>
-                    <label for="Remuneration">Account Number:</label><br>
-                    <div id="inputs" class="inputs" name="ACCOUNT NUMBER">
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>
-                        <input class="acc_no" type="text" inputmode="numeric" maxlength="1" name="ACCOUNT NUMBER"/>    
-                    </div>
+                    <input type="text" name="IFSC" inputmode="alphanumeric" pattern="[A-Z]{4}0[A-Z0-9]{6}" maxlength="14" />
                     <br><hr>
-                    <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 300px;">Scheme:</label><br>
-                    <input type="year" name="AY" id="date" required>
+                    <label for="Remuneration">Account Number:</label><br>
+                    <input type="text" inputmode="numeric" name="ACC_NO" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" />
+                    <br><hr>
+                    <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 260px;">Scheme:</label><br>
+                    <input type="year" name="YEAR" id="date" required>
                     <select id="scheme" name="SCHEME"required style="margin-left: 100px;">
                         <option value="">--Choose a Scheme--</option>
                         <option value="SCHEME-I">I</option>
@@ -165,7 +193,7 @@
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Division:</label><label for="Remuneration" style="margin-left: 350px;">Batch:</label><br>
+                    <label for="Remuneration">Division:</label><label for="Remuneration" style="margin-left: 310px;">Batch:</label><br>
                     <select id="division" name="DIVISION" required onchange="get(this.id,'batch')">
                         <option value="">--Choose a Division--</option>
                         <option value="A">A</option>
@@ -175,7 +203,7 @@
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 370px;">Choose a Particular:</label><br>
+                    <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 330px;">Choose a Particular:</label><br>
                     <select name="EXAM" id="exam" required onchange="select(this.id,'particulars')">
                         <option value="">--Select--</option>
                         <option value="Regular">Regular</option>
@@ -191,27 +219,27 @@
                     <input type="marks" name="MARKS" id="max-marks" required>
                     <br><hr style="width: 640px; color: rgb(0, 0, 0);">
                     <label for="Remuneration">Number of Students:</label><br>
-                    <input type="students" name="NO. OF STUDENTS" id="noofstudents" oninput="calculateAllowance()" required>
+                    <input type="students" name="NO_OF_STUDENTS" id="noofstudents" oninput="calculateAllowance()" required>
                     <br><hr>
                     <label for="Remuneration">Rs. Per Student:</label><br>
-                    <input type="rs" name="RS. PER STUDENT" id="rsperstudent" oninput="calculateAllowance()" required>
+                    <input type="rs" name="RS_PER_STUDENT" id="rsperstudent" oninput="calculateAllowance()" required>
                     <br><hr>
                     <label for="Remuneration">Amount:</label><br>
-                    <input type="amount" name="AMOUNT" id="amount" required>
+                    <input type="amount" name="AMT1" id="amount" required>
                     <br><hr>
                     <label for="Remuneration">No. of Days:</label><br>
-                    <input type="days" name="NO. OF DAYS" id="noofdays" oninput="calculateAllowance()" required>
+                    <input type="days" name="NO_OF_DAYS" id="noofdays" oninput="calculateAllowance()" required>
                     <br><hr>
                     <label for="Remuneration">Travelling Allowance /day:</label><br>
-                    <input type="rs" name="TRAVELLING ALLOWANCE /DAY" id="travellingallowanceperday" oninput="calculateAllowance()" required>
+                    <input type="rs" name="TRAV_PER_DAY" id="travellingallowanceperday" oninput="calculateAllowance()" required>
                     <br><hr>
                     <label for="Remuneration">Travelling Allowance:</label><br>
-                    <input type="rs" name="TRAVELLING ALLOWANCE" id="travellingallowance" required>
+                    <input type="rs" name="TRAV_ALLOWANCE" id="travellingallowance" required>
                     <br><hr>
                     <label for="Remuneration">Total:</label><br>
                     <input type="total" name="TOTAL" id="total" required>
                     
-                    <input type="submit" id="submit"><br>
+                    <input type="submit" name='submit' id="submit"><br>
                 </form>
             </div>
             <script src="admin.js"></script>

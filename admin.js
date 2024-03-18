@@ -53,7 +53,7 @@ function calculateTotal()
     }
     else if(s1.value=="VI(Even)")
     {
-        var optionArray = ['EA|Electromagnetics and Antenna' ,'ML|Machine Learning', 'EPMV|Image Processing and Machine Vision','CCN|Computer Communication Network', 'DBMS|Database Management System','MSVD|Mixed Signal VLSI Design', 'IOT4.0|IOT And Industry 4.0','SAP|Speech and Audio Processing' ];
+        var optionArray = ['EMA|Electromagnetics and Antenna' ,'ML|Machine Learning', 'IPMV|Image Processing and Machine Vision','CCN|Computer Communication Network', 'DBMS|Database Management System','MSVD|Mixed Signal VLSI Design', 'IOT4.0|IOT And Industry 4.0','SAP|Speech and Audio Processing' ];
     }
     else if(s1.value=="VII(Odd)")
     {
