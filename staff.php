@@ -1,3 +1,46 @@
+<?php
+require_once 'database.php';
+
+$conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $EDATE = $_POST["DATE_OF_EXAM"];
+    $EXAMDATE = date('Y-m-d', strtotime($EDATE));
+    $PDATE = $_POST["DATE_OF_PREPARATION"];
+    $PREPDATE = date('Y-m-d', strtotime($PDATE));
+    $NO_OF_DAYS = $_POST["NO_OF_DAYS"];
+    $SEMESTER = $_POST["SEMESTER"];
+    $SUBJECT = $_POST["SUBJECT"];
+    $STAFF = $_POST["STAFF"];
+    $DESIGNATION = $_POST["DESIGNATION"];
+    $PARTICULARS = $_POST["PARTICULARS"];
+    $NO_OF_STUDENTS = $_POST["NO_OF_STUDENTS"];
+    $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
+    $TOTAL = $_POST["TOTAL"];
+
+    $sql = "INSERT INTO `staff`(`exam_date`, `prep_date`, `no_of_days`, `semester`, `subject`, `name`, `designation`, `particular`, `no_of_students`, `rs_per_student`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssssssssiii", $EXAMDATE, $PREPDATE, $NO_OF_DAYS, $SEMESTER, $SUBJECT, $STAFF, $DESIGNATION, $PARTICULARS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
+    $s_id=null;
+
+    if (!mysqli_stmt_execute($stmt)) {
+        die("SQL execute statement failed: " . mysqli_stmt_error($stmt));
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -86,13 +129,13 @@
                 </div>
             </nav>
             <div class="container">
-                <form class="form" action="https://api.sheetmonkey.io/form/sfAqfqFqhzDDMEK39TpVcj" method="post" name="remuneration-form">
+                <form class="form" action=staff.php method="post" name="remuneration-form">
                     <input type="hidden" name="CREATED" value="x-sheetmonkey-current-date-time" />
                     <label for="Remuneration">Date of Exam:</label><label for="Remuneration" style="margin-left: 200px;">Date of Preparation:</label><br>
-                    <input type="date" name="DATE OF EXAM" id="edate" required>
-                    <input type="date" name="DATE OF PREPARATION" id="pdate" required style="margin-left: 125px;"><br><hr style="width: 640px; color: black;">
+                    <input type="date" name="DATE_OF_EXAM" id="edate" required>
+                    <input type="date" name="DATE_OF_PREPARATION" id="pdate" required style="margin-left: 125px;"><br><hr style="width: 640px; color: black;">
                     <label for="Remuneration">Number of Days:</label><br>
-                    <input type="days" name="NUMBER OF DAYS" id="no-of-days" required>
+                    <input type="days" name="NO_OF_DAYS" id="no-of-days" required>
                     <br><hr>
                     <label for="Remuneration">Semester:</label><br>
                     <select name="SEMESTER" id="semester" required onchange="populate(this.id,'subject')">
@@ -143,14 +186,14 @@
                     </select>
                     <br><hr>
                     <label for="Remuneration">Number of Students:</label><br>
-                    <input type="students" name="NO. OF STUDENTS" id="noofstudents" oninput="calculateTotal()" required>
+                    <input type="students" name="NO_OF_STUDENTS" id="noofstudents" oninput="calculateTotal()" required>
                     <br><hr>
                     <label for="Remuneration">Rs. Per Student:</label><br>
-                    <input type="rs" name="RS. PER STUDENT" id="rsperstudent" oninput="calculateTotal()" required>
+                    <input type="rs" name="RS_PER_STUDENT" id="rsperstudent" oninput="calculateTotal()" required>
                     <br><hr>
                     <label for="Remuneration">TOTAL:</label><br>
                     <input type="number" name="TOTAL" id="total" required>
-                    <input type="submit" id="submit"><br>
+                    <input type="submit" name='submit' id="submit"><br>
                 </form>
             </div>
             <script src="admin.js"></script>
