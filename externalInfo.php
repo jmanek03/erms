@@ -1,3 +1,13 @@
+<?php
+    require_once 'database.php';
+
+    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+    
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    $result = mysql_query("SELECT * FROM external ");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -84,6 +94,66 @@
                     </div>
                 </div>
             </nav>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">College</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Residential Address</th>
+                    <th scope="col">Professional Address</th>
+                    <th scope="col">Benefeciary</th>
+                    <th scope="col">Bank</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">IFSC</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Scheme</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Division</th>
+                    <th scope="col">Batch</th>
+                    <th scope="col">Exam</th>
+                    <th scope="col">Particulars</th>
+                    <th scope="col">Marks</th>
+                    <th scope="col">No. of Days</th>
+                    <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <?php
+                while( $row = mysql_fetch_assoc( $result ) ){
+                    echo
+                    "<tr>
+                    <td>{$row\['NAME'\]}</td>
+                    <td>{$row\['COLLEGE'\]}</td>
+                    <td>{$row\['PHONE'\]}</td>
+                    <td>{$row\['RES_ADDRESS'\]}</td>
+                    <td>{$row\['PROF_ADDRESS'\]}</td>
+                    <td>{$row\['BENEFECIARY'\]}</td>
+                    <td>{$row\['BANK'\]}</td> 
+                    <td>{$row\['BRANCH'\]}</td> 
+                    <td>{$row\['IFSC'\]}</td> 
+                    <td>{$row\['ACC_NO'\]}</td> 
+                    <td>{$row\['YEAR'\]}</td>
+                    <td>{$row\['SCHEME'\]}</td> 
+                    <td>{$row\['SEMESTER'\]}</td> 
+                    <td>{$row\['SUBJECT'\]}</td> 
+                    <td>{$row\['DIVISION'\]}</td>
+                    <td>{$row\['BATCH'\]}</td>
+                    <td>{$row\['EXAM'\]}</td> 
+                    <td>{$row\['PARTICULARS'\]}</td> 
+                    <td>{$row\['MARKS'\]}</td>  
+                    <td>{$row\['NO_OF_STUDENTS'\]}</td>
+                    <td>{$row\['NO_OF_DAYS'\]}</td>
+                    <td>{$row\['TOTAL'\]}</td>   
+
+                    </tr>\n";
+                }
+                ?>
+                </tbody>
+
+            </table>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

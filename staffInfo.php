@@ -1,3 +1,13 @@
+<?php
+    require_once 'database.php';
+
+    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+    
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    $result = mysql_query("SELECT * FROM staff");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -84,6 +94,43 @@
                     </div>
                 </div>
             </nav>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Date of Exam</th>
+                    <th scope="col">Preparation  Date</th>
+                    <th scope="col">No. of Days</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Staff</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Particulars</th>
+                    <th scope="col">No. of Students</th>
+                    <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <?php
+                while( $row = mysql_fetch_assoc( $result ) ){
+                    echo
+                    "<tr>
+                    <td>{$row\['DATE_OF_EXAM'\]}</td>
+                    <td>{$row\['DATE_OF_PREPARATION'\]}</td>
+                    <td>{$row\['NO_OF_DAYS'\]}</td>
+                    <td>{$row\['SEMESTER'\]}</td>
+                    <td>{$row\['SUBJECT'\]}</td>
+                    <td>{$row\['STAFF'\]}</td>
+                    <td>{$row\['DESIGNATION'\]}</td> 
+                    <td>{$row\['PARTICULARS'\]}</td>
+                    <td>{$row\['NO_OF_STUDENTS'\]}</td>
+                    <td>{$row\['TOTAL'\]}</td> 
+                    
+                    </tr>\n";
+                }
+                ?>
+                </tbody>
+
+            </table>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

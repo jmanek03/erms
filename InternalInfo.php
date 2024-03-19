@@ -1,3 +1,13 @@
+<?php
+    require_once 'database.php';
+
+    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+    
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    $result = mysql_query("SELECT * FROM internal ");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -20,7 +30,7 @@
 </head>
 
 <body>
-
+    
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
@@ -84,6 +94,47 @@
                     </div>
                 </div>
             </nav>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Scheme</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Division</th>
+                    <th scope="col">Batch</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Exam</th>
+                    <th scope="col">Particular</th>
+                    <th scope="col">Max. Marks</th>
+                    <th scope="col">No. of Students</th>
+                    <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <?php
+                while( $row = mysql_fetch_assoc( $result ) ){
+                    echo
+                    "<tr>
+                    <td>{$row\['DATE'\]}</td>
+                    <td>{$row\['SCHEME'\]}</td>
+                    <td>{$row\['SEMESTER'\]}</td>
+                    <td>{$row\['SUBJECT'\]}</td>
+                    <td>{$row\['DIVISION'\]}</td>
+                    <td>{$row\['BATCH'\]}</td>
+                    <td>{$row\['TEACHER'\]}</td> 
+                    <td>{$row\['EXAM'\]}</td> 
+                    <td>{$row\['PARTICULARS'\]}</td> 
+                    <td>{$row\['MARKS'\]}</td> 
+                    <td>{$row\['NO_OF_STUDENTS'\]}</td>
+                    <td>{$row\['TOTAL'\]}</td> 
+                    
+                    </tr>\n";
+                }
+                ?>
+                </tbody>
+
+            </table>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -91,7 +142,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
+        
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
