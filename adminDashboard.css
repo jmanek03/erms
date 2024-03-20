@@ -88,7 +88,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.4em;
+    font-size: 1.6em;
     display: block;
 }
 #sidebar ul li a:hover {
@@ -199,17 +199,17 @@ a.article, a.article:hover {
     overflow: hidden;
   }
   
-  #btn_print, .button__icon, .button__text {
+  #btn_print, #button__icon, #button__text {
     transition: all 0.3s;
   }
   
-  #btn_print .button__text {
+  #btn_print #button__text {
     transform: translateX(22px);
     color: #fff;
     font-weight: 600;
   }
   
-  #btn_print .button__icon {
+  #btn_print #button__icon {
     position: absolute;
     transform: translateX(109px);
     height: 100%;
@@ -229,16 +229,16 @@ a.article, a.article:hover {
     background: #17795E;
   }
   
-  #btn_print:hover .button__text {
+  #btn_print:hover #button__text {
     color: transparent;
   }
   
-  #btn_print:hover .button__icon {
+  #btn_print:hover #button__icon {
     width: 148px;
     transform: translateX(0);
   }
   
-  #btn_print:active .button__icon {
+  #btn_print:active #button__icon {
     background-color: #146c54;
   }
   
@@ -298,9 +298,30 @@ a.article, a.article:hover {
        font-style: normal;
        font-family: 'Times New Roman', Times, serif;
     }
- 
- }
-
- @media print {
-    button {display: none;}
-       }
+    /* @page {
+        margin: 0;
+      }
+      body {
+          height: 100%;
+          width: 100%;
+      }
+      div.row > div {
+        display: inline-block;  
+        border: solid 1px #ccc;
+        margin: 0.1cm;
+        font-size: 1rem;
+      }
+      div.row {
+        display: block;
+        margin: solid 2px black;
+        margin: 0.2cm 1cm;
+        font-size: 0;
+        white-space: nowrap;
+      }
+      .table {
+          transform: translate(8.5in, -100%) rotate(90deg);
+          transform-origin: bottom left;
+          display: block;
+      } */
+      button {display: none;}
+  }

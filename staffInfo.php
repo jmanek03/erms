@@ -1,13 +1,3 @@
-<?php
-    require_once 'database.php';
-
-    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
-    
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    $result = mysql_query("SELECT * FROM staff");
-?>
 <!DOCTYPE html>
 <html>
 
@@ -94,11 +84,12 @@
                     </div>
                 </div>
             </nav>
-            <table class="table table-hover">
+            <h1 class="text-center">Staff Remuneration</h1>
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                     <th scope="col">Date of Exam</th>
-                    <th scope="col">Preparation  Date</th>
+                    <th scope="col">Preparation Date</th>
                     <th scope="col">No. of Days</th>
                     <th scope="col">Semester</th>
                     <th scope="col">Subject</th>
@@ -110,31 +101,43 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                <?php if(isset($_GET[''])){
-                while( $row = mysql_fetch_assoc( $result ) ){
-                    echo
-                    "<tr>
-                    <td>{$row['DATE_OF_EXAM']}</td>
-                    <td>{$row['DATE_OF_PREPARATION']}</td>
-                    <td>{$row['NO_OF_DAYS']}</td>
-                    <td>{$row['SEMESTER']}</td>
-                    <td>{$row['SUBJECT']}</td>
-                    <td>{$row['STAFF']}</td>
-                    <td>{$row['DESIGNATION']}</td> 
-                    <td>{$row['PARTICULARS']}</td>
-                    <td>{$row['NO_OF_STUDENTS']}</td>
-                    <td>{$row['TOTAL']}</td> 
+                <?php 
+                    require_once 'database.php';
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    $sql="SELECT * FROM staff";
+                    $result=mysqli_query($conn,$sql);
+                    if (!$result) {
+                        echo "Could not successfully run query ($sql) from DB: " . mysqli_error($conn);
+                        exit;
+                    }
                     
-                    </tr>\n";
-                }
+                    while( $data=mysqli_fetch_array($result, MYSQLI_ASSOC) ){
+                    echo
+                    '<tr>
+                    <td>'.$data["exam_date"].'</td> 
+                    <td>'.$data["prep_date"].'</td>
+                    <td>'.$data["no_of_days"].'</td>
+                    <td>'.$data["semester"].'</td>
+                    <td>'.$data["subject"].'</td>
+                    <td>'.$data["name"].'</td>
+                    <td>'.$data["designation"].'</td>
+                    <td>'.$data["particular"].'</td>
+                    <td>'.$data["no_of_students"].'</td>
+                    <td>'.$data["total"].'</td>   
+
+                    </tr>';
+                
             }
-                ?>
+                
+            ?>
                 </tbody>
 
             </table>
             <button id="btn_print" type="button">
-                <span class="button__text">Print Page</span>
-                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                <span id="button__text">Print Page</span>
+                <span id="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                     <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
                     <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
                     </svg>

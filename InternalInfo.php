@@ -1,13 +1,3 @@
-<?php
-    require_once 'database.php';
-
-    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
-    
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    $result = mysql_query("SELECT * FROM internal ");
-?>
 <!DOCTYPE html>
 <html>
 
@@ -94,10 +84,11 @@
                     </div>
                 </div>
             </nav>
-            <table class="table table-hover">
+            <h1 class="text-center">Internal Remuneration</h1>
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">Date</th>
+                    <th scope="col">Academic Year</th>
                     <th scope="col">Scheme</th>
                     <th scope="col">Semester</th>
                     <th scope="col">Subject</th>
@@ -112,33 +103,45 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                <?php if(isset($_GET[''])){
-                while( $row = mysql_fetch_assoc( $result ) ){
-                    echo
-                    "<tr>
-                    <td>{$row['DATE']}</td>
-                    <td>{$row['SCHEME']}</td>
-                    <td>{$row['SEMESTER']}</td>
-                    <td>{$row['SUBJECT']}</td>
-                    <td>{$row['DIVISION']}</td>
-                    <td>{$row['BATCH']}</td>
-                    <td>{$row['TEACHER']}</td> 
-                    <td>{$row['EXAM']}</td> 
-                    <td>{$row['PARTICULARS']}</td> 
-                    <td>{$row['MARKS']}</td> 
-                    <td>{$row['NO_OF_STUDENTS']}</td>
-                    <td>{$row['TOTAL']}</td> 
+                <?php 
+                    require_once 'database.php';
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    $sql="SELECT * FROM internal";
+                    $result=mysqli_query($conn,$sql);
+                    if (!$result) {
+                        echo "Could not successfully run query ($sql) from DB: " . mysqli_error($conn);
+                        exit;
+                    }
                     
-                    </tr>\n";
-                }
+                    while( $data=mysqli_fetch_array($result, MYSQLI_ASSOC) ){
+                    echo
+                    '<tr>
+                    <td>'.$data["academic year"].'</td> 
+                    <td>'.$data["scheme"].'</td>
+                    <td>'.$data["semester"].'</td>
+                    <td>'.$data["subject"].'</td>
+                    <td>'.$data["division"].'</td>
+                    <td>'.$data["batch"].'</td>
+                    <td>'.$data["t_name"].'</td>
+                    <td>'.$data["exam"].'</td> 
+                    <td>'.$data["particular"].'</td> 
+                    <td>'.$data["max_marks"].'</td>  
+                    <td>'.$data["no_of_students"].'</td>
+                    <td>'.$data["total"].'</td>   
+
+                    </tr>';
+                
             }
-                ?>
+                
+            ?>
                 </tbody>
 
             </table>
-            <button id="btn_print" type="button">
-                <span class="button__text">Print Page</span>
-                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+            <button id="btn_print" type="button" onclick="printPage()">
+                <span id="button__text">Print Page</span>
+                <span id="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                     <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
                     <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
                     </svg>
@@ -152,11 +155,12 @@
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <script>
-            const button = document.getElementById("btn_print");
-
-            button.addEventListener("click", () => {
-            window.print();
-            });
+            function printPage() {
+                var printButton = document.getElementById("btn_print"); 
+                printButton.style.visibility = 'hidden';
+                window.print();
+                printButton.style.visibility = 'visible';
+            }
         </script>
         <script type="text/javascript">
             $(document).ready(function () {
