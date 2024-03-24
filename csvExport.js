@@ -38,8 +38,8 @@ class csvExport {
     }
   }
   
-  const btnExport = document.getElementById("#btnExport");
-  const tableElement = document.getElementById("#table");
+  const btnExport = document.getElementById("btnExport");
+  const tableElement = document.getElementById("table");
   
   function csv(){
     const obj = new csvExport(tableElement);

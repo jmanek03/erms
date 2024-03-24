@@ -298,6 +298,15 @@ a.article, a.article:hover {
        font-style: normal;
        font-family: 'Times New Roman', Times, serif;
     }
+    nav {
+        display: block!important;
+    }
+    .no-print {
+        display: none!important;
+    }
+    nav>.container-fluid {
+        justify-content: center!important;
+    }
     /* @page {
         margin: 0;
       }

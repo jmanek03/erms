@@ -126,6 +126,40 @@ box-shadow: 0px 0px 17px 1px rgba(0,0,0,0.6);
     color: beige;
     font-size: 170%;
   }
+  .signin {
+    float: right;
+    max-width: 320px;
+    display: flex;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    gap: 0.75rem;
+    color: #000000;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0, 0.87, 0.12, 1);
+  }
+  
+  .signin:hover {
+    transform: scale(1.025);
+  }
+  
+  .signin:active {
+    transform: scale(0.975);
+  }
+  
+  .signin img {
+    height: 24px;
+    width: auto;
+  }
+  
   .form {
     display: flex;
     flex-direction: column;
