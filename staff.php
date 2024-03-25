@@ -128,6 +128,9 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </nav>
+            <div class="home">
+                <h1>Staff</h1>
+            </div>
             <div class="container">
                 <form class="form" action=staff.php method="post" name="remuneration-form">
                     <input type="hidden" name="CREATED" value="x-sheetmonkey-current-date-time" />

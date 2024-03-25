@@ -62,7 +62,6 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
                         <span></span>
                         <span></span>
@@ -84,6 +83,9 @@
                     </div>
                 </div>
             </nav>
+            <div class="home">
+                <h1>Admin Dashboard</h1>
+            </div>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">

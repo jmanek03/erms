@@ -84,6 +84,9 @@
                     </div>
                 </div>
             </nav>
+            <div class="home">
+                <h1>About</h1>
+            </div>
             <div class="description-container">
                 <div class="dept_info">
                     <h2>Department of Electronics and Telecommunication Engineering</h2>

@@ -128,6 +128,9 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </nav>
+            <div class="home">
+                <h1>Internal Remuneration</h1>
+            </div>
             <div class="container">
                 <form class="form" action=internal.php method="post" name="remuneration-form">
                     <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 240px;">Scheme:</label><br>

@@ -34,7 +34,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-COMPATIBLE" content="IE-EDGE">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-signin-client_id" content="498440516226-4ovoi3n92seiqirgbmv7f2291r2atouo.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="498440516226-qpvlebnobgqnrgps9kn0qcoh9dcv5dk1.apps.googleusercontent.com">
   <link rel="stylesheet" href="signup.css">
   <link rel="shortcut-icon" type="image/x-icon" href="favicon.ico">
   <title>K. J. SOMAIYA INSTITUTE OF TECHNOLOGY</title>
@@ -136,8 +136,8 @@
       require_once 'vendor/autoload.php';
 
       // init configuration
-      $clientID = '498440516226-4ovoi3n92seiqirgbmv7f2291r2atouo.apps.googleusercontent.com';
-      $clientSecret = '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';
+      $clientID = '498440516226-qpvlebnobgqnrgps9kn0qcoh9dcv5dk1.apps.googleusercontent.com';
+      $clientSecret = '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';
       $redirectUri = 'http://localhost/college-website/userDashboard.php';
 
       // create Client Request to access Google API

@@ -139,6 +139,9 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </nav>
+            <div class="home">
+                <h1>External Remuneration</h1>
+            </div>
             <div class="container">
                 <form class="form" action=external.php method="post" name="remuneration-form">
                     <label for="Remuneration">Name of External Examiner:</label><br>

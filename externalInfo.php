@@ -82,7 +82,9 @@
                     </div>
                 </div>
             </nav>
-            <h1 class="text-center">External Remuneration</h1>
+            <div class="home">
+                <h1>External Remuneration</h1>
+            </div>
             
             <table id="table" class="table table-striped table-hover table-sm">
             

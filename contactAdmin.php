@@ -84,6 +84,9 @@
                     </div>
                 </div>
             </nav>
+            <div class="home">
+                <h1>Contact</h1>
+            </div>
             <div class="card-deck">
                 <div class="card">
                     <h4 class="card-title text-center">GUIDED BY</h4>

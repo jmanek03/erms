@@ -84,6 +84,9 @@
                     </div>
                 </div>
             </nav>
+            <div class="home">
+                <h1>User Dashboard</h1>
+            </div>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
