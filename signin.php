@@ -85,9 +85,6 @@
     
         }
       }
-        else{
-        echo "Email does not match";
-      }
       if (isset($_POST["submit"])){
         $firstName = $_POST["firstname"];
         $lastName = $_POST["lastname"];

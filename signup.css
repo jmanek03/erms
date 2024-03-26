@@ -7,20 +7,20 @@ body {
 }
 #college{
   color:#ffffff;
-  font-size: 230%;
+  font-size: 250%;
   font-weight: bold;
   text-align:center;
   position: fixed; 
-  top: 0;
+  top: 5px;
   padding: 10px 10px;
 }
 #address {
   color: #ffffff;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: bold;
   text-align:center;
   position: fixed; 
-  top: 75px;
+  top: 90px;
   padding: 10px 10px;
 }
 .container1{
