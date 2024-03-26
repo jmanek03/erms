@@ -60,29 +60,34 @@
     </div>
   </div>
   <div class="container2">
-    <?php
+  <?php
     if (isset($_POST["signin"])){
       $email= $_POST["email"];
-      $password= $_POST["password"];
+      $password= $_POST["password"];  
       require_once "database.php";
       $sql="SELECT * FROM signup WHERE email = '$email'";
-      $result=mysqli_query($conn,$sql);
-      $user=mysqli_fetch_array($result, MYSQLI_ASSOC);
-      if($user){
-        if (password_verify($password,$user["password"])){
-          header("Location: userDashboard.php") ;
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+              $userType = $row['userType'];
+          }
+
+          if ($userType == "user") {
+              header("Location: userDashboard.php");
+          } elseif ($userType == "admin") {
+              header("Location: adminDashboard.php");
+          } else {
+              die();
+          }
+      } else {
           die();
-        }
-        else{
-          echo "Password does not match";
+    
         }
       }
-      else{
+        else{
         echo "Email does not match";
       }
-    }
-    ?>
-    <?php
       if (isset($_POST["submit"])){
         $firstName = $_POST["firstname"];
         $lastName = $_POST["lastname"];
