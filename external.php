@@ -279,6 +279,7 @@ if (isset($_POST['submit'])) {
                 <tbody class="table-group-divider">
                 <?php 
                     require_once 'database.php';
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
