@@ -153,20 +153,22 @@ a.article, a.article:hover {
     min-height: 100vh;
     transition: all 0.3s;
 }
+
 .home {
     position: relative;
     letter-spacing: 0.2rem;
-    color: rgb(135, 50, 50);
+    color: #923434;
     width: 20%;
     height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    margin-left: 50px;
 }
 
 .home h1::before {
-    border-top: 7px solid rgb(135, 35, 35);
+    border-top: 7px solid #923434;
     content: "";
     display: block;
     width: 125%;
@@ -184,7 +186,7 @@ a.article, a.article:hover {
 }
 
 .home h1::after {
-    border-bottom: 7px solid rgb(135, 61, 61);
+    border-bottom: 7px solid #923434;
     content: "";
     display: block;
     border-top: 4px solid color;
@@ -235,64 +237,101 @@ a.article, a.article:hover {
     opacity: 1;
     margin: 5px auto;
 }
-#btn_print,#btnExport {
-    position: relative;
-    width: 150px;
-    height: 40px;
-    cursor: pointer;
+.btn-container{
     display: flex;
+    margin: 13px;
+}
+
+.Btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    border: 1px solid #17795E;
-    background-color: #209978;
-    overflow: hidden;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
   }
   
-  #btn_print,#btnExport, #button__icon, #button__text {
-    transition: all 0.3s;
+  .svgIcon {
+    fill: #923434;
   }
   
-  #btn_print #button__text, #btnExport #button__text {
-    transform: translateX(22px);
-    color: #fff;
-    font-weight: 600;
+  .icon2 {
+    width: 18px;
+    height: 5px;
+    border-bottom: 2px solid #923434;
+    border-left: 2px solid #923434;
+    border-right: 2px solid #923434;
   }
   
-  #btn_print #button__icon, #btnExport #button__icon {
+  .tooltip {
     position: absolute;
-    transform: translateX(109px);
-    height: 100%;
-    width: 39px;
-    background-color: #17795E;
+    right: -105px;
+    opacity: 0;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-duration: .2s;
+    pointer-events: none;
+    letter-spacing: 0.5px;
   }
   
-  #btn_print .svg, #btnExport .svg {
-    width: 20px;
-    fill: #fff;
+  .tooltip::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: rgb(12, 12, 12);
+    background-size: 1000%;
+    background-position: center;
+    transform: rotate(45deg);
+    left: -5%;
+    transition-duration: .3s;
   }
   
-  #btn_print:hover, #btnExport:hover{
-    background: #17795E;
+  .Btn:hover .tooltip {
+    opacity: 1;
+    transition-duration: .3s;
   }
   
-  #btn_print:hover #button__text,#btnExport:hover #button__text {
-    color: transparent;
+  .Btn:hover {
+    background-color: #923434;
+    transition-duration: .3s;
   }
   
-  #btn_print:hover #button__icon,#btnExport:hover #button__icon {
-    width: 148px;
-    transform: translateX(0);
+  .Btn:hover .icon2 {
+    border-bottom: 2px solid rgb(235, 235, 235);
+    border-left: 2px solid rgb(235, 235, 235);
+    border-right: 2px solid rgb(235, 235, 235);
   }
   
-  #btn_print:active #button__icon,#btnExport:active #button__icon {
-    background-color: #146c54;
+  .Btn:hover .svgIcon {
+    fill: rgb(255, 255, 255);
+    animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
   
-  #btn_print:active,#btnExport:active {
-    border: 1px solid #146c54;
+  @keyframes slide-in-top {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
   }
+  
 .description-container{
     box-shadow: 0px 0px 25px 3px rgba(84,76,84,0.79);
     border-radius: 20px;

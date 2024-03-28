@@ -7,6 +7,14 @@ function calculateTotal()
         var total=noofstudents*rsperstudent;
         document.getElementById("total").value = total;
     }
+    function calculateNumberOfDays(){
+        var maxmarks=document.getElementById("max-marks").value;
+        var maxmarks = parseInt(maxmarks, 10);
+        var noofpapers=document.getElementById("number-of-papers").value;
+        var noofpapers = parseInt(noofpapers, 10);
+        var noofdays=Math.round(maxmarks/noofpapers);
+        document.getElementById("noofdays").value = noofdays;
+    }
     function calculateAllowance()
     {
         var noofstudents=document.getElementById("noofstudents").value;
@@ -106,6 +114,28 @@ function select(s1,s2)
     else if(s1.value=="KT")
     {
         var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Practical & Oral','O|Oral','ESE|End Semester','SE|Supplementary Exam'];
+    }
+    for (option in optionArray)
+    {
+        var pair = optionArray[option].split("|");
+        var newOption = document.createElement("option");
+        newOption.value = pair[0];
+        newOption.innerHTML = pair[1];
+        s2.options.add(newOption);
+    }
+}
+function set(s1,s2)
+{
+    var s1=document.getElementById(s1);
+    var s2=document.getElementById(s2);
+    s2.innerHTML = "";
+    if(s1.value=="8")
+    {
+        var optionArray = ['45|45'];
+    }
+    else if(s1.value=="KT")
+    {
+        var optionArray = ['60|60'];
     }
     for (option in optionArray)
     {

@@ -94,7 +94,7 @@ if (isset($_POST['submit'])) {
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
-                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teachers</a>
+                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                         <ul class="collapse list-unstyled" id="teacherSubmenu">
                             <li>
                               <a href="external.php">External</a>
@@ -142,7 +142,20 @@ if (isset($_POST['submit'])) {
             <div class="home">
                 <h1>External Remuneration</h1>
             </div>
-            <div class="container">
+            <div class="btn-container btn-toolbar">
+                <input id="fileUpload" type="file" name="Browse" accept=".csv">
+                <button class="Btn btn mr-3" id="upload" value="Upload" onclick="Upload()">
+                    <svg class="svgIcon" viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path></svg>
+                    <span class="icon2"></span>
+                    <span class="tooltip">Upload</span>
+                </button>
+                <button class="Btn btn mr-3" onclick="csv()">
+                    <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                    <span class="icon2"></span>
+                    <span class="tooltip">Download</span>
+                </button>
+            </div>
+            <div class="container" id="dvCsv">
                 <form class="form" action=external.php method="post" name="remuneration-form">
                     <label for="Remuneration">Name of External Examiner:</label><br>
                     <input type="ext_name" name="NAME" id="ext_name" >
@@ -165,10 +178,10 @@ if (isset($_POST['submit'])) {
                     <input type="name" name="BRANCH" id="branch" style="margin-left:100px">
                     <br><hr>
                     <label for="Remuneration">IFSC Code:</label><br>
-                    <input type="text" name="IFSC" inputmode="alphanumeric" pattern="[A-Z]{4}0[A-Z0-9]{6}" maxlength="14" />
+                    <input type="text" name="IFSC" id="IFSC" inputmode="alphanumeric" pattern="[A-Z]{4}0[A-Z0-9]{6}" maxlength="14" />
                     <br><hr>
                     <label for="Remuneration">Account Number:</label><br>
-                    <input type="text" inputmode="numeric" name="ACC_NO" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" />
+                    <input type="text" inputmode="numeric" id="acno" name="ACC_NO" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" />
                     <br><hr>
                     <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 260px;">Scheme:</label><br>
                     <input type="year" name="YEAR" id="date" required>
@@ -176,6 +189,8 @@ if (isset($_POST['submit'])) {
                         <option value="">--Choose a Scheme--</option>
                         <option value="SCHEME-I">I</option>
                         <option value="SCHEME-II">II</option>
+                        <option value="SCHEME-II B">II B</option>
+                        <option value="SCHEME-III">III</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Semester:</label><br>
@@ -196,21 +211,11 @@ if (isset($_POST['submit'])) {
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Division:</label><label for="Remuneration" style="margin-left: 310px;">Batch:</label><br>
-                    <select id="division" name="DIVISION" required onchange="get(this.id,'batch')">
-                        <option value="">--Choose a Division--</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                    </select>
-                    <select name="BATCH" id="batch" style="margin-left: 100px;" required>
-                        <option value=""></option>
-                    </select>
-                    <br><hr>
-                    <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 330px;">Choose a Particular:</label><br>
+                    <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 330px;">Particulars:</label><br>
                     <select name="EXAM" id="exam" required onchange="select(this.id,'particulars')">
                         <option value="">--Select--</option>
                         <option value="Regular">Regular</option>
-                        <option value="KT">KT</option>
+                        <option value="KT">Supplementary</option>
                         
                     </select>
                     <select id="particulars" name="PARTICULARS" style="margin-left: 100px;">
@@ -218,22 +223,37 @@ if (isset($_POST['submit'])) {
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Maximum Marks:</label><br>
-                    <input type="marks" name="MARKS" id="max-marks" required>
-                    <br><hr style="width: 640px; color: rgb(0, 0, 0);">
                     <label for="Remuneration">Number of Students:</label><br>
                     <input type="students" name="NO_OF_STUDENTS" id="noofstudents" oninput="calculateAllowance()" required>
                     <br><hr>
+                    
                     <label for="Remuneration">Rs. Per Student:</label><br>
-                    <input type="rs" name="RS_PER_STUDENT" id="rsperstudent" oninput="calculateAllowance()" required>
+                    <select id="rsperstudent" name="RS_PER_STUDENT" oninput="calculateNumberOfDays()" onchange="set(this.id,'max-marks')" required>
+                        <option value="">--Rs. Per Student--</option>
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                    </select>
                     <br><hr>
                     <label for="Remuneration">Amount:</label><br>
                     <input type="amount" name="AMT1" id="amount" required>
                     <br><hr>
+                    <label for="Remuneration">Maximum Marks:</label><label for="Remuneration" style="margin-left: 280px;">Minimum Papers to be assessed/day:</label><br>
+                    <select id="max-marks" name="MARKS" oninput="calculateNumberOfDays()" required>
+                        <option value="">--Maximum Marks--</option>
+                        <option value="45">45</option>
+                        <option value="60">60</option>
+                    </select>
+                    <select id="number-of-papers" name="NO_OF_PAPERS" style="margin-left: 100px;" onchange="calculateNumberOfDays()" required>
+                        <option value="">--Minimum No. of Papers--</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                    </select>
+                    <br><hr style="width: 640px; color: rgb(0, 0, 0);">
                     <label for="Remuneration">No. of Days:</label><br>
                     <input type="days" name="NO_OF_DAYS" id="noofdays" oninput="calculateAllowance()" required>
                     <br><hr>
-                    <label for="Remuneration">Travelling Allowance /day:</label><br>
+                    <label for="Remuneration">Travelling Allowance/day:</label><br>
                     <input type="rs" name="TRAV_PER_DAY" id="travellingallowanceperday" oninput="calculateAllowance()" required>
                     <br><hr>
                     <label for="Remuneration">Travelling Allowance:</label><br>
@@ -335,13 +355,7 @@ if (isset($_POST['submit'])) {
                     </span>
                 </button>
                 <br><br> -->
-                <button id="btnExport" type="button" onclick="csv()">
-                    <span id="button__text">CSV File</span>
-                    <span id="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-csv" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM3.517 14.841a1.13 1.13 0 0 0 .401.823q.195.162.478.252.284.091.665.091.507 0 .859-.158.354-.158.539-.44.187-.284.187-.656 0-.336-.134-.56a1 1 0 0 0-.375-.357 2 2 0 0 0-.566-.21l-.621-.144a1 1 0 0 1-.404-.176.37.37 0 0 1-.144-.299q0-.234.185-.384.188-.152.512-.152.214 0 .37.068a.6.6 0 0 1 .246.181.56.56 0 0 1 .12.258h.75a1.1 1.1 0 0 0-.2-.566 1.2 1.2 0 0 0-.5-.41 1.8 1.8 0 0 0-.78-.152q-.439 0-.776.15-.337.149-.527.421-.19.273-.19.639 0 .302.122.524.124.223.352.367.228.143.539.213l.618.144q.31.073.463.193a.39.39 0 0 1 .152.326.5.5 0 0 1-.085.29.56.56 0 0 1-.255.193q-.167.07-.413.07-.175 0-.32-.04a.8.8 0 0 1-.248-.115.58.58 0 0 1-.255-.384zM.806 13.693q0-.373.102-.633a.87.87 0 0 1 .302-.399.8.8 0 0 1 .475-.137q.225 0 .398.097a.7.7 0 0 1 .272.26.85.85 0 0 1 .12.381h.765v-.072a1.33 1.33 0 0 0-.466-.964 1.4 1.4 0 0 0-.489-.272 1.8 1.8 0 0 0-.606-.097q-.534 0-.911.223-.375.222-.572.632-.195.41-.196.979v.498q0 .568.193.976.197.407.572.626.375.217.914.217.439 0 .785-.164t.55-.454a1.27 1.27 0 0 0 .226-.674v-.076h-.764a.8.8 0 0 1-.118.363.7.7 0 0 1-.272.25.9.9 0 0 1-.401.087.85.85 0 0 1-.478-.132.83.83 0 0 1-.299-.392 1.7 1.7 0 0 1-.102-.627zm8.239 2.238h-.953l-1.338-3.999h.917l.896 3.138h.038l.888-3.138h.879z"/>
-                        </svg>
-                    </span>
-                </button>
+                
             </div>
             <script src="admin.js"></script>
         </div>

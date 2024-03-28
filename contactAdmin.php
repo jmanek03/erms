@@ -37,7 +37,7 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
-                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teachers</a>
+                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                         <ul class="collapse list-unstyled" id="teacherSubmenu">
                             <li>
                               <a href="external.php">External</a>

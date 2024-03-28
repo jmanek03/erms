@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
-                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teachers</a>
+                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                         <ul class="collapse list-unstyled" id="teacherSubmenu">
                             <li>
                               <a href="external.php">External</a>
@@ -131,10 +131,22 @@ if (isset($_POST['submit'])) {
             <div class="home">
                 <h1>Staff</h1>
             </div>
+            <div class="btn-container btn-toolbar">
+                <button class="Btn btn mr-3" onclick="">
+                    <svg class="svgIcon" viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path></svg>
+                    <span class="icon2"></span>
+                    <span class="tooltip">Upload</span>
+                </button>
+                <button class="Btn btn mr-3" onclick="csv()">
+                    <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                    <span class="icon2"></span>
+                    <span class="tooltip">Download</span>
+                </button>
+            </div>
             <div class="container">
                 <form class="form" action=staff.php method="post" name="remuneration-form">
                     <input type="hidden" name="CREATED" value="x-sheetmonkey-current-date-time" />
-                    <label for="Remuneration">Date of Exam:</label><label for="Remuneration" style="margin-left: 200px;">Date of Preparation:</label><br>
+                    <label for="Remuneration">Date of Exam:</label><label for="Remuneration" style="margin-left: 330px;">Date of Preparation:</label><br>
                     <input type="date" name="DATE_OF_EXAM" id="edate" required>
                     <input type="date" name="DATE_OF_PREPARATION" id="pdate" required style="margin-left: 125px;"><br><hr style="width: 640px; color: black;">
                     <label for="Remuneration">Number of Days:</label><br>
