@@ -107,6 +107,21 @@ if (isset($_POST['submit'])) {
                             <a href="staff.php">Staff</a>
                         </li>
                     </ul>
+                    <a href="#ESESubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">End-Sem</a>
+                        <ul class="collapse list-unstyled" id="ESESubmenu">
+                            <a href="#facultySubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
+                            <ul class="collapse list-unstyled" id="facultySubmenu1">
+                                <li>
+                                    <a href="externalESE.php">External</a>
+                                </li>
+                                <li>
+                                    <a href="internal.php">Internal</a>
+                                </li>
+                            </ul>
+                            <li>
+                                <a href="staff.php">Staff</a>
+                            </li>
+                        </ul>
                 </li>
                 <li>
                     <a href="contactAdmin.php">Contact</a>
@@ -287,8 +302,6 @@ if (isset($_POST['submit'])) {
                     <th scope="col">Semester</th>
                     <th scope="col">Subject</th>
                     <th scope="col">Division</th>
-                    <th scope="col">Batch</th>
-                    <th scope="col">Exam</th>
                     <th scope="col">Particulars</th>
                     <th scope="col">Marks</th>
                     <th scope="col">No. of Students</th>
@@ -326,9 +339,7 @@ if (isset($_POST['submit'])) {
                     <td>'.$data["academic_year"].'</td>
                     <td>'.$data["scheme"].'</td> 
                     <td>'.$data["semester"].'</td> 
-                    <td>'.$data["subject"].'</td> 
-                    <td>'.$data["division"].'</td>
-                    <td>'.$data["batch"].'</td>
+                    <td>'.$data["subject"].'</td>
                     <td>'.$data["exam"].'</td> 
                     <td>'.$data["particular"].'</td> 
                     <td>'.$data["max_marks"].'</td>  

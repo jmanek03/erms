@@ -88,7 +88,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.6em;
+    font-size: 1.7em;
     display: block;
 }
 #sidebar ul li a:hover {
@@ -113,7 +113,6 @@ a[data-toggle="collapse"] {
     right: 20px;
     transform: translateY(-50%);
 }
-
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
@@ -142,8 +141,21 @@ a.article, a.article:hover {
     color: #fff !important;
 }
 
-
-
+#sidebar ul li ul a{
+    padding: 10px;
+    font-size: 1.4em !important;
+    display: block;
+}
+#sidebar ul li ul ul a{
+    padding: 10px;
+    font-size: 1.2em !important;
+    display: block;
+}
+#sidebar ul li ul ul ul li a{
+    padding: 10px;
+    font-size: 0.9em !important;
+    display: block;
+}
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */

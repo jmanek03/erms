@@ -36,9 +36,10 @@
                     <a href="aboutAdmin.php">About</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
-                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
-                        <ul class="collapse list-unstyled" id="teacherSubmenu">
+                    <a href="#ISSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">In-Sem</a>
+                    <ul class="collapse list-unstyled" id="ISSubmenu">    
+                    <a href="#facultySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
+                        <ul class="collapse list-unstyled" id="facultySubmenu">
                             <li>
                               <a href="external.php">External</a>
                             </li>
@@ -49,6 +50,22 @@
                         <li>
                             <a href="staff.php">Staff</a>
                         </li>
+                    </ul>
+                    <a href="#ESESubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">End-Sem</a>
+                        <ul class="collapse list-unstyled" id="ESESubmenu">
+                            <a href="#facultySubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
+                            <ul class="collapse list-unstyled" id="facultySubmenu1">
+                                <li>
+                                    <a href="externalESE.php">External</a>
+                                </li>
+                                <li>
+                                    <a href="internal.php">Internal</a>
+                                </li>
+                            </ul>
+                            <li>
+                                <a href="staff.php">Staff</a>
+                            </li>
+                        </ul>
                     </ul>
                 </li>
                 <li>
