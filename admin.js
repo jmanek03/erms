@@ -133,7 +133,7 @@ function set(s1,s2)
     {
         var optionArray = ['45|45'];
     }
-    else if(s1.value=="KT")
+    else if(s1.value=="10")
     {
         var optionArray = ['60|60'];
     }

@@ -17,7 +17,7 @@
      position: relative;
    }
   
-   #number-of-papers,#edate,#pdate,#no-of-days,#staff,#designation,#bname,#bank,#branch,#IFSC,#acno,#ext_name,#ext_clg,#phno,#travellingallowance,#travellingallowanceperday,#noofdays,#amount,#total, #exam, #teacher, #division, #batch, #particulars, #max-marks,#noofstudents,#rsperstudent,#date, #name, #subject, #semester,#scheme {
+   #email,#number-of-papers,#edate,#pdate,#no-of-days,#staff,#designation,#bname,#bank,#branch,#IFSC,#acno,#ext_name,#ext_clg,#phno,#travellingallowance,#travellingallowanceperday,#noofdays,#amount,#total, #exam, #teacher, #division, #batch, #particulars, #max-marks,#noofstudents,#rsperstudent,#date, #name, #subject, #semester,#scheme {
      width: 30%;
      height: 30%;
      position:relative;
@@ -39,7 +39,7 @@
      font-size: 12px;
    }
 
-   #number-of-papers:focus,#bname:focus,#bank:focus,#branch:focus,#IFSC:focus,#acno:focus,#ext_name:focus,#ext_clg:focus,#phno:focus,#resadd:focus,#profadd:focus,#exam:focus, #teacher:focus,#division:focus, #batch:focus, #scheme:focus, #semester:focus, #particulars:focus, #max-marks:focus, #noofstudents:focus, #rsperstudent:focus, #date:focus,#name:focus, #subject:focus {
+   #email:focus,#number-of-papers:focus,#bname:focus,#bank:focus,#branch:focus,#IFSC:focus,#acno:focus,#ext_name:focus,#ext_clg:focus,#phno:focus,#resadd:focus,#profadd:focus,#exam:focus, #teacher:focus,#division:focus, #batch:focus, #scheme:focus, #semester:focus, #particulars:focus, #max-marks:focus, #noofstudents:focus, #rsperstudent:focus, #date:focus,#name:focus, #subject:focus {
      outline: none;
      border: 3px solid #000000;
    }

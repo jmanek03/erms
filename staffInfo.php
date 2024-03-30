@@ -36,8 +36,23 @@
                     <a href="aboutUser.php">About</a>
                 </li>
                 <li>
-                    <a href="remuneration.php">Remuneration</a>
-                </li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        
+                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
+                        <ul class="collapse list-unstyled" id="teacherSubmenu">
+                            <li>
+                              <a href="externalInfo.php">External</a>
+                            </li>
+                            <li>
+                              <a href="internalInfo.php">Internal</a>
+                            </li>
+                        </ul>
+                        <li>
+                            <a href="staffInfo.php">Staff</a>
+                        </li>
+                    </ul>
+                    </li>
                 <li>
                     <a href="contactUser.php">Contact</a>
                 </li>

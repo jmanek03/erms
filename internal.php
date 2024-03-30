@@ -16,20 +16,21 @@ if (isset($_POST['submit'])) {
     $BATCH = $_POST["BATCH"];
     $TEACHER = $_POST["TEACHER"];
     $EXAM = $_POST["EXAM"];
+    $EMAIL = $_POST["EMAIL"];
     $PARTICULARS = $_POST["PARTICULARS"];
     $MARKS = $_POST["MARKS"];
     $NO_OF_STUDENTS = $_POST["NO_OF_STUDENTS"];
     $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
     $TOTAL = $_POST["TOTAL"];
 
-    $sql = "INSERT INTO internal (`academic year`, `scheme`, `semester`, `subject`, `division`, `batch`, `t_name`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_students`, `total`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO internal (`academic year`, `scheme`, `semester`, `subject`, `division`, `batch`, `t_name`,`email`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_students`, `total`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
     }
 
-    mysqli_stmt_bind_param($stmt, "sssssssssiiii", $DATE, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $TEACHER, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
+    mysqli_stmt_bind_param($stmt, "ssssssssssiiii", $DATE, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $TEACHER, $EMAIL, $EXAM,  $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
     $t_id=null;
 
     if (!mysqli_stmt_execute($stmt)) {
@@ -229,6 +230,9 @@ if (isset($_POST['submit'])) {
                         <option value="Archana Kshirsagar">Archana Kshirsagar</option>
                     </select>
                     <br><hr>
+                    <label for="Remuneration">Email:</label><br>
+                    <input type="email" name="EMAIL" id="email" >
+                    <br><hr>
                     <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 350px;">Choose a Particular:</label><br>
                     <select name="EXAM" id="exam" required onchange="select(this.id,'particulars')">
                         <option value="">--Select--</option>
@@ -276,6 +280,7 @@ if (isset($_POST['submit'])) {
                     <th scope="col">Division</th>
                     <th scope="col">Batch</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Exam</th>
                     <th scope="col">Particular</th>
                     <th scope="col">Max. Marks</th>
@@ -286,6 +291,7 @@ if (isset($_POST['submit'])) {
                 <tbody class="table-group-divider">
                 <?php 
                     require_once 'database.php';
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
@@ -306,6 +312,7 @@ if (isset($_POST['submit'])) {
                     <td>'.$data["division"].'</td>
                     <td>'.$data["batch"].'</td>
                     <td>'.$data["t_name"].'</td>
+                    <td>'.$data["email"].'</td>
                     <td>'.$data["exam"].'</td> 
                     <td>'.$data["particular"].'</td> 
                     <td>'.$data["max_marks"].'</td>  

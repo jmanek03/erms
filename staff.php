@@ -16,20 +16,21 @@ if (isset($_POST['submit'])) {
     $SEMESTER = $_POST["SEMESTER"];
     $SUBJECT = $_POST["SUBJECT"];
     $STAFF = $_POST["STAFF"];
+    $EMAIL = $_POST["EMAIL"];
     $DESIGNATION = $_POST["DESIGNATION"];
     $PARTICULARS = $_POST["PARTICULARS"];
     $NO_OF_STUDENTS = $_POST["NO_OF_STUDENTS"];
     $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
     $TOTAL = $_POST["TOTAL"];
 
-    $sql = "INSERT INTO `staff`(`exam_date`, `prep_date`, `no_of_days`, `semester`, `subject`, `name`, `designation`, `particular`, `no_of_students`, `rs_per_student`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO `staff`(`exam_date`, `prep_date`, `no_of_days`, `semester`, `subject`, `name`, `email`, `designation`, `particular`, `no_of_students`, `rs_per_student`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
     }
 
-    mysqli_stmt_bind_param($stmt, "ssssssssiii", $EXAMDATE, $PREPDATE, $NO_OF_DAYS, $SEMESTER, $SUBJECT, $STAFF, $DESIGNATION, $PARTICULARS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
+    mysqli_stmt_bind_param($stmt, "sssssssssiii", $EXAMDATE, $PREPDATE, $NO_OF_DAYS, $SEMESTER, $SUBJECT, $STAFF, $EMAIL, $DESIGNATION, $PARTICULARS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
     $s_id=null;
 
     if (!mysqli_stmt_execute($stmt)) {
@@ -78,9 +79,12 @@ if (isset($_POST['submit'])) {
                 </li>
                 <li>
                     <a href="aboutAdmin.php">About</a>
+                </li>
+                <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
+                    <a href="#ISSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">In-Sem</a>
+                    <ul class="collapse list-unstyled" id="ISSubmenu">
                         <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                         <ul class="collapse list-unstyled" id="teacherSubmenu">
                             <li>
@@ -110,6 +114,7 @@ if (isset($_POST['submit'])) {
                             </li>
                         </ul>
                 </li>
+                </ul>
                 <li>
                     <a href="contactAdmin.php">Contact</a>
                 </li>
@@ -201,6 +206,9 @@ if (isset($_POST['submit'])) {
                         <option value="Manjula Jadhav">Manjula Jadhav</option>
                     </select>
                     <br><hr>
+                    <label for="Remuneration">Email:</label><br>
+                    <input type="email" name="EMAIL" id="email" >
+                    <br><hr>
                     <label for="Remuneration">Designation:</label><br>
                     <select id="designation" name="DESIGNATION">
                         <option value="Lab-Attendant">Lab Attendant</option>
@@ -236,6 +244,7 @@ if (isset($_POST['submit'])) {
                     <th scope="col">Semester</th>
                     <th scope="col">Subject</th>
                     <th scope="col">Staff</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Designation</th>
                     <th scope="col">Particulars</th>
                     <th scope="col">No. of Students</th>
@@ -245,6 +254,7 @@ if (isset($_POST['submit'])) {
                 <tbody class="table-group-divider">
                 <?php 
                     require_once 'database.php';
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
@@ -264,6 +274,7 @@ if (isset($_POST['submit'])) {
                     <td>'.$data["semester"].'</td>
                     <td>'.$data["subject"].'</td>
                     <td>'.$data["name"].'</td>
+                    <td>'.$data["email"].'</td>
                     <td>'.$data["designation"].'</td>
                     <td>'.$data["particular"].'</td>
                     <td>'.$data["no_of_students"].'</td>

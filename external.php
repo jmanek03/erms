@@ -9,6 +9,7 @@ if (!$conn) {
 
 if (isset($_POST['submit'])) {
     $NAME = $_POST["NAME"];
+    $EMAIL = $_POST["EMAIL"];
     $COLLEGE = $_POST["COLLEGE"];
     $PHNO = $_POST["PHONE"];
     $RES_ADDR = $_POST["RES_ADDRESS"];
@@ -22,8 +23,6 @@ if (isset($_POST['submit'])) {
     $SCHEME = $_POST["SCHEME"];
     $SEMESTER = $_POST["SEMESTER"];
     $SUBJECT = $_POST["SUBJECT"];
-    $DIVISION = $_POST["DIVISION"];
-    $BATCH = $_POST["BATCH"];
     $EXAM = $_POST["EXAM"];
     $PARTICULARS = $_POST["PARTICULARS"];
     $MARKS = $_POST["MARKS"];
@@ -35,14 +34,14 @@ if (isset($_POST['submit'])) {
     $AMT2 = $_POST["TRAV_ALLOWANCE"];
     $TOTAL = $_POST["TOTAL"];
 
-    $sql = "INSERT INTO external ( `name`, `college_name`, `phno`, `res_addr`, `prof_addr`, `beneficiary`, `bank`, `branch`, `ifsc`, `acc_no`, `academic_year`, `scheme`, `semester`, `subject`, `division`, `batch`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_student`, `amount`, `no_of_days`, `trav_allow_per_day`, `trav_allowance`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO external ( `name`, `email` , `college_name`, `phno`, `res_addr`, `prof_addr`, `beneficiary`, `bank`, `branch`, `ifsc`, `acc_no`, `academic_year`, `scheme`, `semester`, `subject`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_student`, `amount`, `no_of_days`, `trav_allow_per_day`, `trav_allowance`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
     }
 
-    mysqli_stmt_bind_param($stmt, "ssisssssssssssssssiiiiiiii", $NAME, $COLLEGE, $PHNO, $RES_ADDR, $PROF_ADDR, $BENEFICIARY, $BANK, $BRANCH, $IFSC, $ACC_NO, $YEAR, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $AMT1, $NO_OF_DAYS, $TRAV_PER_DAY, $AMT2, $TOTAL);
+    mysqli_stmt_bind_param($stmt, "sssisssssssssssssiiiiiiii", $NAME,$EMAIL, $COLLEGE, $PHNO, $RES_ADDR, $PROF_ADDR, $BENEFICIARY, $BANK, $BRANCH, $IFSC, $ACC_NO, $YEAR, $SCHEME, $SEMESTER, $SUBJECT, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $AMT1, $NO_OF_DAYS, $TRAV_PER_DAY, $AMT2, $TOTAL);
     $e_id=null;
 
     if (!mysqli_stmt_execute($stmt)) {
@@ -93,7 +92,8 @@ if (isset($_POST['submit'])) {
                     <a href="aboutAdmin.php">About</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
+                    <a href="#ISSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">In-Sem</a>
+                        <ul class="collapse list-unstyled" id="ISSubmenu">
                         <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                         <ul class="collapse list-unstyled" id="teacherSubmenu">
                             <li>
@@ -123,6 +123,7 @@ if (isset($_POST['submit'])) {
                             </li>
                         </ul>
                 </li>
+            </ul>
                 <li>
                     <a href="contactAdmin.php">Contact</a>
                 </li>
@@ -174,6 +175,9 @@ if (isset($_POST['submit'])) {
                 <form class="form" action=external.php method="post" name="remuneration-form">
                     <label for="Remuneration">Name of External Examiner:</label><br>
                     <input type="ext_name" name="NAME" id="ext_name" >
+                    <br><hr>
+                    <label for="Remuneration">Email:</label><br>
+                    <input type="email" name="EMAIL" id="email" >
                     <br><hr>
                     <label for="Remuneration">College:</label><label for="Remuneration" style="margin-left: 300px;">Phone number:</label><br>
                     <input type="ext_clg" name="COLLEGE" id="ext_clg" >
@@ -243,7 +247,7 @@ if (isset($_POST['submit'])) {
                     <br><hr>
                     
                     <label for="Remuneration">Rs. Per Student:</label><br>
-                    <select id="rsperstudent" name="RS_PER_STUDENT" oninput="calculateNumberOfDays()" onchange="set(this.id,'max-marks')" required>
+                    <select id="rsperstudent" name="RS_PER_STUDENT" oninput="calculateAllowance()" onchange="set(this.id,'max-marks')" required>
                         <option value="">--Rs. Per Student--</option>
                         <option value="8">8</option>
                         <option value="10">10</option>
@@ -288,6 +292,7 @@ if (isset($_POST['submit'])) {
                 <thead>
                     <tr>
                     <th scope="col">Name</th>
+                    <th scope="col">Email</th>
                     <th scope="col">College</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Residential Address</th>
@@ -326,7 +331,8 @@ if (isset($_POST['submit'])) {
                     while( $data=mysqli_fetch_array($result, MYSQLI_ASSOC) ){
                     echo
                     '<tr>
-                    <td>'.$data["name"].'</td> 
+                    <td>'.$data["name"].'</td>
+                    <td>'.$data["email"].'</td> 
                     <td>'.$data["college_name"].'</td>
                     <td>'.$data["phno"].'</td>
                     <td>'.$data["res_addr"].'</td>
