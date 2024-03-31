@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -115,12 +118,13 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                <?php 
+                <?php
+                
                     require_once 'database.php';
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql="SELECT * FROM external WHERE email= '$email'";
+                    $sql="SELECT * FROM external WHERE email= '.$_SESSION[email]' ";
                     $result=mysqli_query($conn,$sql);
                     if (!$result) {
                         echo "Could not successfully run query ($sql) from DB: " . mysqli_error($conn);
@@ -131,7 +135,6 @@
                     echo
                     '<tr>
                     <td>'.$data["name"].'</td>
-                    <td>'.$data["email"].'</td> 
                     <td>'.$data["college_name"].'</td>
                     <td>'.$data["phno"].'</td>
                     <td>'.$data["res_addr"].'</td>
