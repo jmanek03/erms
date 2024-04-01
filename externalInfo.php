@@ -96,6 +96,7 @@
                 <thead>
                     <tr>
                     <th scope="col">Name</th>
+                    <th scope="col">Email</th>
                     <th scope="col">College</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Residential Address</th>
@@ -124,7 +125,8 @@
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql="SELECT * FROM external WHERE email= '.$_SESSION[email]' ";
+                    echo $email=$_SESSION['email'];
+                    $sql="SELECT * FROM external WHERE email= '$_SESSION[email]' ";
                     $result=mysqli_query($conn,$sql);
                     if (!$result) {
                         echo "Could not successfully run query ($sql) from DB: " . mysqli_error($conn);
@@ -135,6 +137,7 @@
                     echo
                     '<tr>
                     <td>'.$data["name"].'</td>
+                    <td>'.$data["email"].'</td>
                     <td>'.$data["college_name"].'</td>
                     <td>'.$data["phno"].'</td>
                     <td>'.$data["res_addr"].'</td>

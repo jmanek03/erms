@@ -34,6 +34,14 @@ function calculateTotal()
         var total=amount+travellingallowance;
         document.getElementById("total").value = total;
     }
+    function calculateRemuneration(){
+        var noofduties=document.getElementById("noofduties").value;
+        var noofduties = parseInt(noofduties, 10);
+        var rperduty=document.getElementById("rperduty").value;
+        var rperduty = parseInt(rperduty, 10);
+        var total=(noofduties*rperduty);
+        document.getElementById("total").value = total;
+    }
     function populate(s1,s2)
 {
     var s1=document.getElementById(s1);
@@ -109,11 +117,11 @@ function select(s1,s2)
     s2.innerHTML = "";
     if(s1.value=="Regular")
     {
-        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Practical & Oral','O|Oral','ESE|End Semester'];
+        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Practical & Oral','O|Oral'];
     }
-    else if(s1.value=="KT")
+    else if(s1.value=="Supplementary")
     {
-        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Practical & Oral','O|Oral','ESE|End Semester','SE|Supplementary Exam'];
+        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Practical & Oral','O|Oral'];
     }
     for (option in optionArray)
     {
@@ -136,6 +144,36 @@ function set(s1,s2)
     else if(s1.value=="10")
     {
         var optionArray = ['60|60'];
+    }
+    for (option in optionArray)
+    {
+        var pair = optionArray[option].split("|");
+        var newOption = document.createElement("option");
+        newOption.value = pair[0];
+        newOption.innerHTML = pair[1];
+        s2.options.add(newOption);
+    }
+}
+function put(s1,s2)
+{
+    var s1=document.getElementById(s1);
+    var s2=document.getElementById(s2);
+    s2.innerHTML = "";
+    if(s1.value=="CC")
+    {
+        var optionArray = ['225|225'];
+    }
+    else if(s1.value=="SS")
+    {
+        var optionArray = ['175|175'];
+    }
+    else if(s1.value=="JS")
+    {
+        var optionArray = ['125|125'];
+    }
+    else if(s1.value=="R")
+    {
+        var optionArray = ['80|80'];
     }
     for (option in optionArray)
     {

@@ -25,23 +25,19 @@ if (isset($_POST['submit'])) {
     $SUBJECT = $_POST["SUBJECT"];
     $EXAM = $_POST["EXAM"];
     $PARTICULARS = $_POST["PARTICULARS"];
-    $MARKS = $_POST["MARKS"];
-    $NO_OF_STUDENTS = $_POST["NO_OF_STUDENTS"];
-    $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
-    $AMT1= $_POST["AMT1"];
-    $NO_OF_DAYS = $_POST["NO_OF_DAYS"];
-    $TRAV_PER_DAY = $_POST["TRAV_PER_DAY"];
-    $AMT2 = $_POST["TRAV_ALLOWANCE"];
-    $TOTAL = $_POST["TOTAL"];
+    $DESIGNATION = $_POST["DESIGNATION"];
+    $NO_OF_DUTIES = $_POST["NO_OF_DUTIES"];
+    $RPERDUTY = $_POST["R/DUTY"];
+    $TOTAL= $_POST["TOTAL"];
 
-    $sql = "INSERT INTO external ( `name`, `email` , `college_name`, `phno`, `res_addr`, `prof_addr`, `beneficiary`, `bank`, `branch`, `ifsc`, `acc_no`, `academic_year`, `scheme`, `semester`, `subject`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_student`, `amount`, `no_of_days`, `trav_allow_per_day`, `trav_allowance`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO externalese ( `name`, `email` , `college_name`, `phno`, `res_addr`, `prof_addr`, `beneficiary`, `bank`, `branch`, `ifsc`, `acc_no`, `academic_year`, `scheme`, `semester`, `subject`, `exam`, `particular`, `designation`, `no_of_duties`, `rperduty`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
     }
 
-    mysqli_stmt_bind_param($stmt, "sssisssssssssssssiiiiiiii", $NAME,$EMAIL, $COLLEGE, $PHNO, $RES_ADDR, $PROF_ADDR, $BENEFICIARY, $BANK, $BRANCH, $IFSC, $ACC_NO, $YEAR, $SCHEME, $SEMESTER, $SUBJECT, $EXAM, $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $AMT1, $NO_OF_DAYS, $TRAV_PER_DAY, $AMT2, $TOTAL);
+    mysqli_stmt_bind_param($stmt, "sssissssssssssssssiii", $NAME,$EMAIL, $COLLEGE, $PHNO, $RES_ADDR, $PROF_ADDR, $BENEFICIARY, $BANK, $BRANCH, $IFSC, $ACC_NO, $YEAR, $SCHEME, $SEMESTER, $SUBJECT, $EXAM, $PARTICULARS, $DESIGNATION, $NO_OF_DUTIES, $RPERDUTY, $TOTAL);
     $e_id=null;
 
     if (!mysqli_stmt_execute($stmt)) {
@@ -172,7 +168,7 @@ if (isset($_POST['submit'])) {
                 </button>
             </div>
             <div class="container" id="dvCsv">
-                <form class="form" action=external.php method="post" name="remuneration-form">
+                <form class="form" action=externalESE.php method="post" name="remuneration-form">
                     <label for="Remuneration">Name of External Examiner:</label><br>
                     <input type="ext_name" name="NAME" id="ext_name" >
                     <br><hr>
@@ -231,7 +227,7 @@ if (isset($_POST['submit'])) {
                     </select>
                     <br><hr>
                     <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 330px;">Particulars:</label><br>
-                    <select name="EXAM" id="exam" required onchange="select(this.id,'particulars')">
+                    <select name="EXAM" id="exam" required >
                         <option value="">--Select--</option>
                         <option value="Regular">Regular</option>
                         <option value="KT">Supplementary</option>
@@ -239,44 +235,34 @@ if (isset($_POST['submit'])) {
                     </select>
                     <select id="particulars" name="PARTICULARS" style="margin-left: 100px;">
                         <option value="">--Choose a Particular--</option>
-                        <option value=""></option>
+                        <option value="">Question Paper Setting</option>
+                        <option value="">Answer key Submission</option>
+                        <option value="">Exam Conduction</option>
+                        <option value="">Paper Assessment</option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Number of Students:</label><br>
-                    <input type="students" name="NO_OF_STUDENTS" id="noofstudents" oninput="calculateAllowance()" required>
+                    <label for="Remuneration">Designation:</label><br>
+                    <select id="designation" name="DESIGNATION" onchange="put(this.id,'rperduty')">
+                        <option value="">--Choose a Designation--</option>
+                        <option value="CC">Chief Conductor</option>
+                        <option value="SS">Senior Supervisor</option>
+                        <option value="JS">Junior Supervisor</option>
+                        <option value="R">Reliever</option>
+                        <option value="">N.A.</option>
+                    </select>
+                    <br><hr>
+                    <label for="Remuneration">Number of Duties:</label><br>
+                    <input type="students" name="NO_OF_DUTIES" id="noofduties" oninput="calculateRemuneration()" required>
                     <br><hr>
                     
-                    <label for="Remuneration">Rs. Per Student:</label><br>
-                    <select id="rsperstudent" name="RS_PER_STUDENT" oninput="calculateAllowance()" onchange="set(this.id,'max-marks')" required>
-                        <option value="">--Rs. Per Student--</option>
-                        <option value="8">8</option>
-                        <option value="10">10</option>
+                    <label for="Remuneration">Remuneration/duty:</label><br>
+                    <select id="rperduty" name="R/DUTY" oninput="calculateRemuneration()" required>
+                        <option value="">--Remuneration/duty--</option>
+                        <option value="225">225</option>
+                        <option value="175">175</option>
+                        <option value="125">125</option>
+                        <option value="80">80</option>
                     </select>
-                    <br><hr>
-                    <label for="Remuneration">Amount:</label><br>
-                    <input type="amount" name="AMT1" id="amount" required>
-                    <br><hr>
-                    <label for="Remuneration">Maximum Marks:</label><label for="Remuneration" style="margin-left: 280px;">Minimum Papers to be assessed/day:</label><br>
-                    <select id="max-marks" name="MARKS" oninput="calculateNumberOfDays()" required>
-                        <option value="">--Maximum Marks--</option>
-                        <option value="45">45</option>
-                        <option value="60">60</option>
-                    </select>
-                    <select id="number-of-papers" name="NO_OF_PAPERS" style="margin-left: 100px;" onchange="calculateNumberOfDays()" required>
-                        <option value="">--Minimum No. of Papers--</option>
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                        <option value="40">40</option>
-                    </select>
-                    <br><hr style="width: 640px; color: rgb(0, 0, 0);">
-                    <label for="Remuneration">No. of Days:</label><br>
-                    <input type="days" name="NO_OF_DAYS" id="noofdays" oninput="calculateAllowance()" required>
-                    <br><hr>
-                    <label for="Remuneration">Travelling Allowance/day:</label><br>
-                    <input type="rs" name="TRAV_PER_DAY" id="travellingallowanceperday" oninput="calculateAllowance()" required>
-                    <br><hr>
-                    <label for="Remuneration">Travelling Allowance:</label><br>
-                    <input type="rs" name="TRAV_ALLOWANCE" id="travellingallowance" required>
                     <br><hr>
                     <label for="Remuneration">Total:</label><br>
                     <input type="total" name="TOTAL" id="total" required>
@@ -308,9 +294,8 @@ if (isset($_POST['submit'])) {
                     <th scope="col">Subject</th>
                     <th scope="col">Division</th>
                     <th scope="col">Particulars</th>
-                    <th scope="col">Marks</th>
-                    <th scope="col">No. of Students</th>
-                    <th scope="col">No. of Days</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">No. of Duties</th>
                     <th scope="col">Total</th>
                     </tr>
                 </thead>
@@ -321,7 +306,7 @@ if (isset($_POST['submit'])) {
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql="SELECT * FROM external";
+                    $sql="SELECT * FROM externalese";
                     $result=mysqli_query($conn,$sql);
                     if (!$result) {
                         echo "Could not successfully run query ($sql) from DB: " . mysqli_error($conn);
@@ -348,9 +333,8 @@ if (isset($_POST['submit'])) {
                     <td>'.$data["subject"].'</td>
                     <td>'.$data["exam"].'</td> 
                     <td>'.$data["particular"].'</td> 
-                    <td>'.$data["max_marks"].'</td>  
-                    <td>'.$data["no_of_students"].'</td>
-                    <td>'.$data["no_of_days"].'</td>
+                    <td>'.$data["designation"].'</td>  
+                    <td>'.$data["no_of_duties"].'</td>
                     <td>'.$data["total"].'</td>   
 
                     </tr>';
