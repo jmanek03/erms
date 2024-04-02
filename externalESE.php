@@ -24,13 +24,13 @@ if (isset($_POST['submit'])) {
     $SEMESTER = $_POST["SEMESTER"];
     $SUBJECT = $_POST["SUBJECT"];
     $EXAM = $_POST["EXAM"];
-    $PARTICULARS = $_POST["PARTICULARS"];
+    $PARTICULARS = $_POST["PARTICULARS"]; 
     $DESIGNATION = $_POST["DESIGNATION"];
     $NO_OF_DUTIES = $_POST["NO_OF_DUTIES"];
     $RPERDUTY = $_POST["R/DUTY"];
     $TOTAL= $_POST["TOTAL"];
 
-    $sql = "INSERT INTO externalese ( `name`, `email` , `college_name`, `phno`, `res_addr`, `prof_addr`, `beneficiary`, `bank`, `branch`, `ifsc`, `acc_no`, `academic_year`, `scheme`, `semester`, `subject`, `exam`, `particular`, `designation`, `no_of_duties`, `rperduty`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO externalese ( `name`, `email` , `college_name`, `phno`, `res_addr`, `prof_addr`, `beneficiary`, `bank`, `branch`, `ifsc`, `acc_no`, `academic_year`, `scheme`, `semester`, `subject`, `exam`, `particular` , `designation`, `no_of_duties`, `rperduty`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -186,7 +186,7 @@ if (isset($_POST['submit'])) {
                     <input type="profadd" name="PROF_ADDRESS" id="profadd">
                     <br><hr>
                     <label for="Remuneration">Benefeciary Name:</label><br>
-                    <input type="name" name="BENEFICIARY" id="bname">\
+                    <input type="name" name="BENEFICIARY" id="bname">
                     <br><hr>
                     <label for="Remuneration">Bank Name:</label><label style="margin-left:280px"for="Remuneration">Branch Address:</label><br>
                     <input type="name" name="BANK" id="bank">
@@ -235,10 +235,10 @@ if (isset($_POST['submit'])) {
                     </select>
                     <select id="particulars" name="PARTICULARS" style="margin-left: 100px;">
                         <option value="">--Choose a Particular--</option>
-                        <option value="">Question Paper Setting</option>
-                        <option value="">Answer key Submission</option>
-                        <option value="">Exam Conduction</option>
-                        <option value="">Paper Assessment</option>
+                        <option value="Question Paper Setting">Question Paper Setting</option>
+                        <option value="Answer key Submission">Answer key Submission</option>
+                        <option value="Exam Conduction">Exam Conduction</option>
+                        <option value="Paper Assessment">Paper Assessment</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Designation:</label><br>

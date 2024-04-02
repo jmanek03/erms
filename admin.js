@@ -101,6 +101,14 @@ function get(s1,s2)
     {
         var optionArray = ['B1|B1' ,'B2|B2', 'B3|B3','B4|B4'];
     }
+    else if(s1.value=="C")
+    {
+        var optionArray = ['C1|C1' ,'C2|C2', 'C3|C3','C4|C4'];
+    }
+    else if(s1.value=="D")
+    {
+        var optionArray = ['D1|D1' ,'D2|D2', 'D3|D3','D4|D4'];
+    }
     for (option in optionArray)
     {
         var pair = optionArray[option].split("|");
@@ -117,11 +125,11 @@ function select(s1,s2)
     s2.innerHTML = "";
     if(s1.value=="Regular")
     {
-        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Practical & Oral','O|Oral'];
+        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Oral with Practical','O|Oral','Mini Project|Mini Project','Minor Project|Minor Project','Major Project A|Major Project A','Major Project B|Major Project B'];
     }
     else if(s1.value=="Supplementary")
     {
-        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Practical & Oral','O|Oral'];
+        var optionArray = ['Termwork|Termwork' ,'IA|IA', 'TT1|Term Test 1','TT2|Term Test 2','P&O|Oral with Practical','O|Oral', 'Mini Project|Mini Project','Minor Project|Minor Project','Major Project A|Major Project A','Major Project B|Major Project B'];
     }
     for (option in optionArray)
     {
@@ -139,11 +147,39 @@ function set(s1,s2)
     s2.innerHTML = "";
     if(s1.value=="8")
     {
-        var optionArray = ['45|45'];
+        var optionArray = ['25|25'];
     }
-    else if(s1.value=="10")
+    else if(s1.value=="12")
     {
-        var optionArray = ['60|60'];
+        var optionArray = ['50|50'];
+    }
+    else if(s1.value=="TT1"||s1.value=="TT2")
+    {
+        var optionArray = ['5|5'];
+    }
+    else if(s1.value=="IA")
+    {
+        var optionArray = ['3|3'];
+    }
+    else if(s1.value=="Termwork")
+    {
+        var optionArray = ['8|8','12|12','28|28'];
+    }
+    else if(s1.value=="P&O")
+    {
+        var optionArray = ['12|12','22|22'];
+    }
+    else if(s1.value=="O")
+    {
+        var optionArray = ['8|8','12|12'];
+    }
+    else if(s1.value=="Mini Project"||s1.value=="Minor Project")
+    {
+        var optionArray = ['18|18'];
+    }
+    else if(s1.value=="Major Project A"||s1.value=="Major Project B")
+    {
+        var optionArray = ['22|22'];
     }
     for (option in optionArray)
     {
@@ -169,11 +205,45 @@ function put(s1,s2)
     }
     else if(s1.value=="JS")
     {
-        var optionArray = ['125|125'];
+        var optionArray = ['125|125','160|160'];
     }
     else if(s1.value=="R")
     {
         var optionArray = ['80|80'];
+    }
+    for (option in optionArray)
+    {
+        var pair = optionArray[option].split("|");
+        var newOption = document.createElement("option");
+        newOption.value = pair[0];
+        newOption.innerHTML = pair[1];
+        s2.options.add(newOption);
+    }
+}
+function push(s1,s2)
+{
+    var s1=document.getElementById(s1);
+    var s2=document.getElementById(s2);
+    s2.innerHTML = "";
+    if(s1.value=="Lab-Assistant")
+    {
+        var optionArray = ['100|100'];
+    }
+    else if(s1.value=="Lab-Attendant")
+    {
+        var optionArray = ['60|60'];
+    }
+    else if(s1.value=="Expert")
+    {
+        var optionArray = ['120|120'];
+    }
+    else if(s1.value=="Peon")
+    {
+        var optionArray = ['50|50'];
+    }
+    else if(s1.value=="TW")
+    {
+        var optionArray = ['100|100'];
     }
     for (option in optionArray)
     {

@@ -237,7 +237,7 @@ if (isset($_POST['submit'])) {
                         <option value="KT">Supplementary</option>
                         
                     </select>
-                    <select id="particulars" name="PARTICULARS" style="margin-left: 100px;">
+                    <select id="particulars" name="PARTICULARS" style="margin-left: 100px;" onchange="set(this.id,'rsperstudent')">
                         <option value="">--Choose a Particular--</option>
                         <option value=""></option>
                     </select>

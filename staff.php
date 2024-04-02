@@ -20,17 +20,17 @@ if (isset($_POST['submit'])) {
     $DESIGNATION = $_POST["DESIGNATION"];
     $PARTICULARS = $_POST["PARTICULARS"];
     $NO_OF_STUDENTS = $_POST["NO_OF_STUDENTS"];
-    $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
+    $RS_PER_DAY = $_POST["RS_PER_DAY"];
     $TOTAL = $_POST["TOTAL"];
 
-    $sql = "INSERT INTO `staff`(`exam_date`, `prep_date`, `no_of_days`, `semester`, `subject`, `name`, `email`, `designation`, `particular`, `no_of_students`, `rs_per_student`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO `staff`(`exam_date`, `prep_date`, `no_of_days`, `semester`, `subject`, `name`, `email`, `designation`, `particular`, `no_of_students`, `rs_per_day`, `total`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
     }
 
-    mysqli_stmt_bind_param($stmt, "sssssssssiii", $EXAMDATE, $PREPDATE, $NO_OF_DAYS, $SEMESTER, $SUBJECT, $STAFF, $EMAIL, $DESIGNATION, $PARTICULARS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
+    mysqli_stmt_bind_param($stmt, "sssssssssiii", $EXAMDATE, $PREPDATE, $NO_OF_DAYS, $SEMESTER, $SUBJECT, $STAFF, $EMAIL, $DESIGNATION, $PARTICULARS, $NO_OF_STUDENTS, $RS_PER_DAY, $TOTAL);
     $s_id=null;
 
     if (!mysqli_stmt_execute($stmt)) {
@@ -166,12 +166,7 @@ if (isset($_POST['submit'])) {
             <div class="container">
                 <form class="form" action=staff.php method="post" name="remuneration-form">
                     <input type="hidden" name="CREATED" value="x-sheetmonkey-current-date-time" />
-                    <label for="Remuneration">Date of Exam:</label><label for="Remuneration" style="margin-left: 330px;">Date of Preparation:</label><br>
-                    <input type="date" name="DATE_OF_EXAM" id="edate" required>
-                    <input type="date" name="DATE_OF_PREPARATION" id="pdate" required style="margin-left: 125px;"><br><hr style="width: 640px; color: black;">
-                    <label for="Remuneration">Number of Days:</label><br>
-                    <input type="days" name="NO_OF_DAYS" id="no-of-days" required>
-                    <br><hr>
+                    
                     <label for="Remuneration">Semester:</label><br>
                     <select name="SEMESTER" id="semester" required onchange="populate(this.id,'subject')">
                         <option value="">--Choose a Semester--</option>
@@ -210,24 +205,33 @@ if (isset($_POST['submit'])) {
                     <input type="email" name="EMAIL" id="email" >
                     <br><hr>
                     <label for="Remuneration">Designation:</label><br>
-                    <select id="designation" name="DESIGNATION">
+                    <select id="designation" name="DESIGNATION" onchange="push(this.id,'rsperday')">
                         <option value="Lab-Attendant">Lab Attendant</option>
-                        <option value="Lab-Assistant">Lab Assitant</option>
+                        <option value="Lab-Assistant">Lab Assistant</option>
                         <option value="Expert">Expert</option>
+                        <option value="Peon">Peon</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Choose a Particular:</label><br>
-                    <select id="particulars" name="PARTICULARS">
+                    <select id="particulars" name="PARTICULARS" onchange="push(this.id,'rsperday')">
                         <option value="TW">Term work</option>
                         <option value="Oral">Oral</option>
-                        <option value="P&O">Practical & Oral</option>
+                        <option value="P&O">Oral With Practical</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Number of Students:</label><br>
                     <input type="students" name="NO_OF_STUDENTS" id="noofstudents" oninput="calculateTotal()" required>
                     <br><hr>
-                    <label for="Remuneration">Rs. Per Student:</label><br>
-                    <input type="rs" name="RS_PER_STUDENT" id="rsperstudent" oninput="calculateTotal()" required>
+                    <label for="Remuneration">Date of Exam:</label><label for="Remuneration" style="margin-left: 330px;">Date of Preparation:</label><br>
+                    <input type="date" name="DATE_OF_EXAM" id="edate" required>
+                    <input type="date" name="DATE_OF_PREPARATION" id="pdate" required style="margin-left: 125px;"><br><hr style="width: 640px; color: black;">
+                    <label for="Remuneration">Number of Days:</label><br>
+                    <input type="days" name="NO_OF_DAYS" id="no-of-days" required>
+                    <br><hr>
+                    <label for="Remuneration">Rs per day:</label><br>
+                    <select id="rsperday" name="RS_PER_DAY" required>
+                        <option value=""></option>
+                    </select>
                     <br><hr>
                     <label for="Remuneration">TOTAL:</label><br>
                     <input type="number" name="TOTAL" id="total" required>
@@ -238,9 +242,6 @@ if (isset($_POST['submit'])) {
             <table id="table" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">Date of Exam</th>
-                    <th scope="col">Preparation Date</th>
-                    <th scope="col">No. of Days</th>
                     <th scope="col">Semester</th>
                     <th scope="col">Subject</th>
                     <th scope="col">Staff</th>
@@ -248,6 +249,9 @@ if (isset($_POST['submit'])) {
                     <th scope="col">Designation</th>
                     <th scope="col">Particulars</th>
                     <th scope="col">No. of Students</th>
+                    <th scope="col">Date of Exam</th>
+                    <th scope="col">Preparation Date</th>
+                    <th scope="col">No. of Days</th>
                     <th scope="col">Total</th>
                     </tr>
                 </thead>
@@ -268,9 +272,6 @@ if (isset($_POST['submit'])) {
                     while( $data=mysqli_fetch_array($result, MYSQLI_ASSOC) ){
                     echo
                     '<tr>
-                    <td>'.$data["exam_date"].'</td> 
-                    <td>'.$data["prep_date"].'</td>
-                    <td>'.$data["no_of_days"].'</td>
                     <td>'.$data["semester"].'</td>
                     <td>'.$data["subject"].'</td>
                     <td>'.$data["name"].'</td>
@@ -278,6 +279,9 @@ if (isset($_POST['submit'])) {
                     <td>'.$data["designation"].'</td>
                     <td>'.$data["particular"].'</td>
                     <td>'.$data["no_of_students"].'</td>
+                    <td>'.$data["exam_date"].'</td> 
+                    <td>'.$data["prep_date"].'</td>
+                    <td>'.$data["no_of_days"].'</td>
                     <td>'.$data["total"].'</td>   
 
                     </tr>';

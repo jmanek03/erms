@@ -196,6 +196,8 @@ if (isset($_POST['submit'])) {
                         <option value="">--Choose a Division--</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
                     </select>
                     <select name="BATCH" id="batch" style="margin-left: 83px;" required>
                         <option value=""></option>
@@ -237,10 +239,10 @@ if (isset($_POST['submit'])) {
                     <select name="EXAM" id="exam" required onchange="select(this.id,'particulars')">
                         <option value="">--Select--</option>
                         <option value="Regular">Regular</option>
-                        <option value="KT">Supplementary</option>
+                        <option value="Supplementary">Supplementary</option>
                         
                     </select>
-                    <select id="particulars" name="PARTICULARS" style="margin-left: 83px;">
+                    <select id="particulars" name="PARTICULARS" style="margin-left: 83px;" onchange="set(this.id,'rsperstudent')">
                         <option value="">--Choose a Particular--</option>
                         <option value=""></option>
                     </select>
@@ -252,14 +254,18 @@ if (isset($_POST['submit'])) {
                     <select id="rsperstudent" name="RS_PER_STUDENT" oninput="calculateTotal()" onchange="set(this.id,'max-marks')" required>
                         <option value="">--Rs. Per Student--</option>
                         <option value="8">8</option>
-                        <option value="10">10</option>
+                        <option value="12">12</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Maximum Marks:</label><br>
                     <select id="max-marks" name="MARKS" required>
                         <option value="">--Maximum Marks--</option>
+                        <option value="60">25</option>
                         <option value="45">45</option>
+                        <option value="60">50</option>
                         <option value="60">60</option>
+                        <option value="60">100</option>
+
                     </select>
                     <br><hr style="width: 640px; color: rgb(0, 0, 0);">
                     <label for="Remuneration">TOTAL:</label><br>
