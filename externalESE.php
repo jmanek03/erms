@@ -237,7 +237,7 @@ if (isset($_POST['submit'])) {
                         <option value="">--Choose a Particular--</option>
                         <option value="Question Paper Setting">Question Paper Setting</option>
                         <option value="Answer key Submission">Answer key Submission</option>
-                        <option value="Exam Conduction">Exam Conduction</option>
+                        <option value="Paper Setting with Answer Key Submission">Paper Setting with Answer Key Submission</option>
                         <option value="Paper Assessment">Paper Assessment</option>
                     </select>
                     <br><hr>
@@ -248,7 +248,7 @@ if (isset($_POST['submit'])) {
                         <option value="SS">Senior Supervisor</option>
                         <option value="JS">Junior Supervisor</option>
                         <option value="R">Reliever</option>
-                        <option value="">N.A.</option>
+                        <option value="">Vigilance Squad</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Number of Duties:</label><br>
