@@ -42,6 +42,14 @@ function calculateTotal()
         var total=(noofduties*rperduty);
         document.getElementById("total").value = total;
     }
+    // function checkOption(designation) {
+    //     var selectedValue = designation.options[designation.selectedIndex].value;
+    //     var noofduties = document.getElementById("nofoduties");
+    //     noofduties.disabled = selectedValue == 5 ? true : false;
+    //     if (!noofduties.disabled) {
+    //         noofduties.focus();
+    //     }
+    // }
     function populate(s1,s2)
 {
     var s1=document.getElementById(s1);
@@ -108,6 +116,18 @@ function get(s1,s2)
     else if(s1.value=="D")
     {
         var optionArray = ['D1|D1' ,'D2|D2', 'D3|D3','D4|D4'];
+    }
+    else if(s1.value=="E")
+    {
+        var optionArray = ['E1|E1' ,'E2|E2', 'E3|E3','E4|E4'];
+    }
+    else if(s1.value=="F")
+    {
+        var optionArray = ['F1|F1' ,'F2|F2', 'F3|F3','F4|F4'];
+    }
+    else if(s1.value=="G")
+    {
+        var optionArray = ['G1|G1' ,'G2|G2', 'G3|G3','G4|G4'];
     }
     for (option in optionArray)
     {
@@ -211,6 +231,14 @@ function put(s1,s2)
     {
         var optionArray = ['80|80'];
     }
+    else if(s1.value=="US")
+    {
+        var optionArray = ['125|125'];
+    }
+    else if(s1.value=="P")
+    {
+        var optionArray = ['40|40'];
+    }
     for (option in optionArray)
     {
         var pair = optionArray[option].split("|");
@@ -244,6 +272,36 @@ function push(s1,s2)
     else if(s1.value=="TW")
     {
         var optionArray = ['100|100'];
+    }
+    for (option in optionArray)
+    {
+        var pair = optionArray[option].split("|");
+        var newOption = document.createElement("option");
+        newOption.value = pair[0];
+        newOption.innerHTML = pair[1];
+        s2.options.add(newOption);
+    }
+}
+function be(s1,s2)
+{
+    var s1=document.getElementById(s1);
+    var s2=document.getElementById(s2);
+    s2.innerHTML = "";
+    if(s1.value=="QP")
+    {
+        var optionArray = ['500|500'];
+    }
+    else if(s1.value=="AK")
+    {
+        var optionArray = ['300|300'];
+    }
+    else if(s1.value=="QP&AK")
+    {
+        var optionArray = ['800|800'];
+    }
+    else if(s1.value=="PA")
+    {
+        var optionArray = ['8|8','10|10'];
     }
     for (option in optionArray)
     {

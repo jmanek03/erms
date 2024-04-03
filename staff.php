@@ -106,11 +106,11 @@ if (isset($_POST['submit'])) {
                                     <a href="externalESE.php">External</a>
                                 </li>
                                 <li>
-                                    <a href="internal.php">Internal</a>
+                                    <a href="internalESE.php">Internal</a>
                                 </li>
                             </ul>
                             <li>
-                                <a href="staff.php">Staff</a>
+                                <a href="staffESE.php">Staff</a>
                             </li>
                         </ul>
                 </li>
