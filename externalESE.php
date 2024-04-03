@@ -233,7 +233,7 @@ if (isset($_POST['submit'])) {
                         <option value="KT">Supplementary</option>
                         
                     </select>
-                    <select id="particulars" name="PARTICULARS" style="margin-left: 100px;">
+                    <select id="particulars" name="PARTICULARS" required style="margin-left: 100px;">
                         <option value="">--Choose a Particular--</option>
                         <option value="Question Paper Setting">Question Paper Setting</option>
                         <option value="Answer key Submission">Answer key Submission</option>
