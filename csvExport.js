@@ -56,8 +56,7 @@ class csvExport {
     }, 500);
   };
   let CSV = document.getElementById('fileUpload'); 
-function Upload() { 
-        console.log(ext_name.text,"clickedd");
+function Upload(event) { 
         const file = event.target.files[0]; 
         const reader = new FileReader(); 
       
@@ -66,17 +65,17 @@ function Upload() {
             const rows = content.split('\n') 
                 .map(row => row.split(',')); 
       
-            const table =  
-                document.getElementById('table'); 
-            table.innerHTML = ''; 
+            const form =  
+            document.getElementById('form'); 
+            form.innerHTML = ''; 
       
             for (let i = 0; i < rows.length; i++) { 
-                let tr = document.createElement('tr'); 
+                let label = document.createElement('label'); 
                 for (let j = 0; j < rows[i].length; j++) { 
-                    let td = document.createElement('td'); 
-                    td.textContent = rows[i][j]; 
-                    tr.appendChild(td);} 
-                table.appendChild(tr);} 
+                    let input = document.createElement('input'); 
+                    input.textContent = rows[i][j]; 
+                    label.appendChild(td);} 
+                form.appendChild(tr);} 
             CSV.style.display = 'none'; 
             button.style.display = 'block';}; 
       

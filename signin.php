@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION['email']= $email;
   if (isset($_POST["submit"])){
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
@@ -193,7 +192,7 @@ $_SESSION['email']= $email;
         <input required="" placeholder="" type="password" class="input" name="confirm_password">
         <span>Confirm password</span>
     </label>
-    <button class="submit" type="submit" name="submit" id="sign-up-btn">SIGN UP</button>
+    <button class="sign-in-btn" type="submit" name="submit" id="sign-up-btn">SIGN UP</button>
     </form>
     </div>
     <div id="signIn-container" class="hide">
@@ -207,14 +206,18 @@ $_SESSION['email']= $email;
         <input required="" placeholder="" type="password" class="input" name="password" class="form-control">
         <span>Password</span>
     </label>
-    <button class="submit" type="submit" value="signin" name="signin" id="sign-in-btn">SIGN IN</button>
-    <p class="justify-content-center">--------or----------</p>
-    <button class="signin">
-      <a href="<?php echo $client->createAuthUrl() ?>">
-      <img src="google-logo.png"></img>
-      Sign in with Google 
-      </a>
-    </button>
+    <div class="buttons-container">
+      <button class="sign-in-btn" type="submit" value="signin" name="signin" id="sign-in-btn">SIGN IN</button>
+      <div class="content__or-text">
+        <span></span>
+        <span>OR</span>
+        <span></span>
+      </div>
+      <button class="google-login-button">
+            <img src="google.svg" class="google-icon"></img>
+            <span>Log in with Google</span>
+      </button>
+    </div>
     </form>
     </div>
     <script>
@@ -234,6 +237,7 @@ $_SESSION['email']= $email;
       })
     </script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="firebase.js"></script>
   </div>
    
 <?php }
