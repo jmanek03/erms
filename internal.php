@@ -8,6 +8,7 @@ if (!$conn) {
 }
 
 if (isset($_POST['submit'])) {
+    $DEPT = $_POST["DEPARTMENT"];
     $DATE = $_POST["DATE"];
     $SCHEME = $_POST["SCHEME"];
     $SEMESTER = $_POST["SEMESTER"];
@@ -23,14 +24,14 @@ if (isset($_POST['submit'])) {
     $RS_PER_STUDENT = $_POST["RS_PER_STUDENT"];
     $TOTAL = $_POST["TOTAL"];
 
-    $sql = "INSERT INTO internal (`academic year`, `scheme`, `semester`, `subject`, `division`, `batch`, `t_name`,`email`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_students`, `total`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO internal (`dept`,`academic year`, `scheme`, `semester`, `subject`, `division`, `batch`, `t_name`,`email`, `exam`, `particular`, `max_marks`, `no_of_students`, `rs_per_students`, `total`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         die("SQL prepare statement failed: " . mysqli_stmt_error($stmt));
     }
 
-    mysqli_stmt_bind_param($stmt, "ssssssssssiiii", $DATE, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $TEACHER, $EMAIL, $EXAM,  $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
+    mysqli_stmt_bind_param($stmt, "sssssssssssiiii",$DEPT, $DATE, $SCHEME, $SEMESTER, $SUBJECT, $DIVISION, $BATCH, $TEACHER, $EMAIL, $EXAM,  $PARTICULARS, $MARKS, $NO_OF_STUDENTS, $RS_PER_STUDENT, $TOTAL);
     $t_id=null;
 
     if (!mysqli_stmt_execute($stmt)) {
@@ -163,6 +164,15 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="container">
                 <form class="form" action=internal.php method="post" name="remuneration-form">
+                <label for="Remuneration">Department:</label><br>
+                    <select name="DEPARTMENT" id="department" required onchange="faculty(this.id,'teacher')">
+                        <option value="">--Choose a Deaprtment--</option>
+                        <option value="COMPS">COMPUTER ENGINEERING</option>
+                        <option value="IT">INFORMATION TECHNOLOGY</option>
+                        <option value="AIDS">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
+                        <option value="EXTC">ELECTRONICS AND TELECOMMUNICATION ENGINEERING</option>
+                        <option value="BSH">BASIC SCIENCE AND HUMANITIES</option>
+                    </select>
                     <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 290px;">Scheme:</label><br>
                     <input type="year" name="DATE" id="date" required>
                     <select id="scheme" name="SCHEME"required style="margin-left: 83px;">
@@ -174,7 +184,7 @@ if (isset($_POST['submit'])) {
                     </select>
                     <br><hr>
                     <label for="Remuneration">Semester:</label><br>
-                    <select name="SEMESTER" id="semester" required onchange="populate(this.id,'subject')">
+                    <select name="SEMESTER" id="semester" required onchange="populate('department',this.id,'subject')">
                         <option value="">--Choose a Semester--</option>
                         <option value="I(Odd)">I(Odd)</option>
                         <option value="II(Even)">II(Even)</option>
@@ -206,30 +216,6 @@ if (isset($_POST['submit'])) {
                     <label for="Remuneration">Faculty Name:</label><br>
                     <select id="teacher" name="TEACHER">
                         <option value="">--Select--</option>
-                        <option value="Jayashree Khanapuri">Jayashree Khanapuri</option>
-                        <option value="Namrata Ansari">Namrata Ansari</option>
-                        <option value="Vricha Chavan">Vricha Chavan</option>
-                        <option value="Sandhya Kadam">Sandhya Kadam</option>
-                        <option value="Tilottama Dhake">Tilottama Dhake</option>
-                        <option value="Rashmi Adatkar">Rashmi Adatkar</option>
-                        <option value="Kiran Rathod">Kiran Rathod</option>
-                        <option value="Pradnya Kamble">Pradnya Kamble</option>
-                        <option value="Prashant Upadhyay">Prashant Upadhyay</option>
-                        <option value="Martand Jha">Martand Jha</option>
-                        <option value="Sandeep Mishra">Sandeep Mishra</option>
-                        <option value="Rupali Satpute">Rupali Satpute</option>
-                        <option value="Sunil Patil">Sunil Patil</option>
-                        <option value="Harshwardhan Ahire">Harshwardhan Ahire</option>
-                        <option value="Pranali Hatode">Pranali Hatode</option>
-                        <option value="Amit Kukreja">Amit Kukreja</option>
-                        <option value="Rupali Kadu">Rupali Kadu</option>
-                        <option value="Sandhya Deshpande">Sandhya Deshpande</option>
-                        <option value="Priya Hankare">Priya Hankare</option>
-                        <option value="Swati Shinde">Swati Shinde</option>
-                        <option value="Sagar Mhatre">Sagar Mhatre</option>
-                        <option value="Priya Gupta">Priya Gupta</option>
-                        <option value="Reshma Rasal">Reshma Rasal</option>
-                        <option value="Archana Kshirsagar">Archana Kshirsagar</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Email:</label><br>

@@ -1,0 +1,23 @@
+ "Design of a Real-Time Quiz System Based on Fastest Finger First Using FPGA" by J. S. Wani, S. B. Joshi, and M. R. Hambarde
+)
+Xilinx
+FPGA boards
+Prototype
+Real-time quiz
+80%
+
+
+ "Implementation of Fastest Finger First Using Spartan-3 FPGA" by S. Anoop Kumar, S. Venkata Ramana, and G. Raghavendra Reddy
+
+
+October 2023
+International Journal of Engineering and Advanced Technology (IJEAT)
+Fastest Finger First
+Buzzer System
+Seven Segment Display
+SPARTAN 3
+
+
+80%
+
+
