@@ -93,116 +93,116 @@ function calculateTotal()
     }
     if(s1.value=="COMPS")
     {
-        if(s1.value=="I(Odd)")
+        if(s2.value=="I(Odd)")
         {
             var optionArray = ['MATHS I|Engg.Maths I' ,'PHY I|Physics I', 'CHEM I|Chemistry I','BEE|BEE', 'MECHANICS|Mechanics' ];
         }
-        else if(s1.value=="II(Even)")
+        else if(s2.value=="II(Even)")
         {
             var optionArray = ['MATHS II|Engg.Maths II' ,'PHY II|Physics II', 'CHEM II|Chemistry II','CP|Computer Programming', 'GRAPHICS|Engg. Graphics' ];
         }
-        else if(s1.value=="III(Odd)")
+        else if(s2.value=="III(Odd)")
         {
             var optionArray = ['AME I|AME I' ,'DSG|Discrete Structures and Graph Theory', 'DS|Data Structure','DLC|EDigital Logic & Computer Architecture', 'CG|Computer Graphics' ];
         }
-        else if(s1.value=="IV(Even)")
+        else if(s2.value=="IV(Even)")
         {
             var optionArray = ['AME II|AME II' ,'AA|Analysis of Algorithm', 'DBMS|Database Management System','OS|Operating Systems', 'MC|Microprocessor' ];
         }
-        else if(s1.value=="V(Odd)")
+        else if(s2.value=="V(Odd)")
         {
             var optionArray = ['CS|Theory of Computer Science' ,'SE|Software Engineering', 'CNN|Computer Network','DWM|Data Warehousing and Mining', 'ADBMS|Advance Database Management System', 'IP|Internet Programming', 'IOT|Internet of Things', 'PGM|Probabilistic Graphical Models' ];
         }
-        else if(s1.value=="VI(Even)")
+        else if(s2.value=="VI(Even)")
         {
             var optionArray = ['SPC|System Programming & Compiler Construction' ,'CSS|Cryptography & System Security', 'MC|Mobile Computing','AI|Artificial Intelligence', 'QA|Quantitative Analysis','MS|Multimedia System', 'IS|Infrastructure Security','DSIP|Digital Signal & Image Processing' ];
         }
-        else if(s1.value=="VII(Odd)")
+        else if(s2.value=="VII(Odd)")
         {
             var optionArray = ['ML|Machine Learning' ,'BDA|Big Data Analytics','CV|Computer Vision', 'AWN|Adhoc Wireless Network', 'EHS|Ethical Hacking and Security', 'NLP|Natural Language Processing', 'ARVR|Augmented and Virtual Reality','IC|Internet Communication','BC|Blockchain','IR|Information Retrieval', 'PLM|Product Lifecycle Management','RE|Reliability Engg.','MIS|Management Information System','OR|Operation Research', 'DE|Design of Experiments','CSL|CyberSecurity and Laws','DMMMM|Disaster Management and Mitigation Measures','EAM|Energy Audit and Management','DE|Development Engg.' ];
         }
-        else if(s1.value=="VIII(Even)")
+        else if(s2.value=="VIII(Even)")
         {
             var optionArray = ['DC|Distributed Computing' ,'ADS|Applied Data Science', 'SDN|Software Defined Network','DF|Digital Forensic', 'DL|Deep Learning','SMA|Social Media Analytics','HPC|High Performance Computing','SAD|Secure Application Development','OML|Optimization in Machine Learning','QC|Quantum Computing' ,'PM|Project Management ','FM|Finance Management','EDM|Entreprenuership Development and Management','HRM|Human Resource Management','PEC|Professional Ethics and CSR','RM|Research Methodology','IP|IPR and Patenting','DBM|Digital Business Management','EM|Environmental Management' ];
         }
     }
     if(s1.value=="IT")
     {
-        if(s1.value=="I(Odd)")
+        if(s2.value=="I(Odd)")
         {
             var optionArray = ['MATHS I|Engg.Maths I' ,'PHY I|Physics I', 'CHEM I|Chemistry I','BEE|BEE', 'MECHANICS|Mechanics' ];
         }
-        else if(s1.value=="II(Even)")
+        else if(s2.value=="II(Even)")
         {
             var optionArray = ['MATHS II|Engg.Maths II' ,'PHY II|Physics II', 'CHEM II|Chemistry II','CP|Computer Programming', 'GRAPHICS|Engg. Graphics' ];
         }
-        else if(s1.value=="III(Odd)")
+        else if(s2.value=="III(Odd)")
         {
             var optionArray = ['AME I|AME I' ,'DSA|Data Structures and Analysis', 'DBMS|Database Management System','JAV|Java Programming', 'FSE|Foundations of Software Engineering' ];
         }
-        else if(s1.value=="IV(Even)")
+        else if(s2.value=="IV(Even)")
         {
             var optionArray = ['AME II|AME II' ,'CNN|Computer Network and Network Design', 'OS|Operating Systems','AT|Automata Theory', 'COA|Computer Organization and Architecture' ];
         }
-        else if(s1.value=="V(Odd)")
+        else if(s2.value=="V(Odd)")
         {
             var optionArray = ['IP|Internet Programming' ,'CNS|Computer Network Security', 'EB|Entrepreneurship and E-Business','IOT|Internet of Things', 'ADBIR|Advanced DatabaseManagement System and Information Retrieval', 'WT|Wireless Technology', 'CG|Computer Graphics', 'ADSA|Advanced Data Structures and Algorithmic Performance Analysis' ];
         }
-        else if(s1.value=="VI(Even)")
+        else if(s2.value=="VI(Even)")
         {
             var optionArray = ['DMBI|Data Mining & Business Intelligence' ,'Web X.0|Web X.0', 'ASP|Advanced Software Engineering and Project Management','AIDS – I|Artificial Intelligence and Data Science – I', 'BDA|Big Data Analytics','IOT|IoT Data Analytics', 'IP|Image Processing','CCS|Cloud Computing and Services' ];
         }
-        else if(s1.value=="VII(Odd)")
+        else if(s2.value=="VII(Odd)")
         {
             var optionArray = ['AIDS - II|Artificial Intelligence and Data Science - II' ,'IOE|Internet of Everything','RL|Reinforcement Learning', 'MLDL|Machine Learning and Deep Learning', 'ACN|Advanced Computer Networks', 'EHDF|Ethical Hacking and Digital Forensics', 'MMS|Multimedia Systems','CV|Computer Vision','UI/UX|UI/UX Design Specializations','STQA|Software Testing & Quality Assurance', 'PLM|Product Lifecycle Management','RE|Reliability Engg.','MIS|Management Information System','OR|Operation Research', 'DE|Design of Experiments','CSL|CyberSecurity and Laws','DMMMM|Disaster Management and Mitigation Measures','EAM|Energy Audit and Management','DE|Development Engg.' ];
         }
-        else if(s1.value=="VIII(Even)")
+        else if(s2.value=="VIII(Even)")
         {
             var optionArray = ['BCDLT|Blockchain and DLT' ,'NLP|Natural Language Processing', 'EAI|Explainable AI & Responsible AI','CS|Cloud Security', 'EC|Edge Computing','RSGIS|Remote Sensing and GIS','ARVR|Augmented Reality – Virtual Reality','HPC|High Performance Computing','OT|Optimization Techniques','PM|Project Management ','FM|Finance Management','EDM|Entreprenuership Development and Management','HRM|Human Resource Management','PEC|Professional Ethics and CSR','RM|Research Methodology','IP|IPR and Patenting','DBM|Digital Business Management','EM|Environmental Management' ];
         }
     }
     if(s1.value=="AIDS")
     {
-        if(s1.value=="I(Odd)")
+        if(s2.value=="I(Odd)")
         {
             var optionArray = ['MATHS I|Engg.Maths I' ,'PHY I|Physics I', 'CHEM I|Chemistry I','BEE|BEE', 'MECHANICS|Mechanics' ];
         }
-        else if(s1.value=="II(Even)")
+        else if(s2.value=="II(Even)")
         {
             var optionArray = ['MATHS II|Engg.Maths II' ,'PHY II|Physics II', 'CHEM II|Chemistry II','CP|Computer Programming', 'GRAPHICS|Engg. Graphics' ];
         }
-        else if(s1.value=="III(Odd)")
+        else if(s2.value=="III(Odd)")
         {
             var optionArray = ['AME I|AME I' ,'DSGT|Discrete Structures and Graph Theory', 'DS|Data Structure','DLCA|Digital Logic & Computer Architecture', 'CG|Computer Graphics' ];
         }
-        else if(s1.value=="IV(Even)")
+        else if(s2.value=="IV(Even)")
         {
             var optionArray = ['AME II|AME II' ,'AA|Analysis of Algorithm', 'OS|Operating Systems','DBMS|Database Management Systems', 'MP|Microprocessor' ];
         }
-        else if(s1.value=="V(Odd)")
+        else if(s2.value=="V(Odd)")
         {
             var optionArray = ['AI|Artificial Intelligence' ,'DWM|Data Warehousing and Mining', 'SE|Software Engineering','ITC|Information Theory and Coding', 'CN|Computer Networks', 'IPMV|Image and Video Processing', 'ESD|Embedded System and Design', 'ABF|Algorithms for Bioinformatics' ];
         }
-        else if(s1.value=="VI(Even)")
+        else if(s2.value=="VI(Even)")
         {
             var optionArray = ['ANN|Artificial Neural Network' ,'ML|Machine Learning', 'DAV|Data Analytics and Visualization','BDA|Big Data Analytics', 'AI-E|AI in E-Commerce','AI-A|AI in Agriculture', 'IOT|Internet of Things','BFDM|Bioinformatics Data Management' ];
         }
-        else if(s1.value=="VII(Odd)")
+        else if(s2.value=="VII(Odd)")
         {
             var optionArray = ['PE|Power Electronics' ,'IOT|Internet of Things','GPPC|Graphic Processor and Parallel Computing', 'VLSI|Mixed Signal VLSI Design', 'ANT|Advanced Networking Technology', 'DC|Data Compression', 'Robotics|Robotics','DSA|Data Science and Applications','CC|Cloud Computing', 'PLM|Product Lifecycle Management','RE|Reliability Engg.','MIS|Management Information System','OR|Operation Research', 'DE|Design of Experiments','CSL|CyberSecurity and Laws','DMMMM|Disaster Management and Mitigation Measures','EAM|Energy Audit and Management','DE|Development Engg.' ];
         }
-        else if(s1.value=="VIII(Even)")
+        else if(s2.value=="VIII(Even)")
         {
             var optionArray = ['IA|Industrial Automation' ,'MEMS|Microelectromechanical Systems', 'VI|Virtual Instrumentation','APE|Advanced Power Electronics', 'WD|Web Design','ICT|Integrated Circuit Technology','SOC|System On Chip','IIOT|Industrial Internet of Things','NGN|Next Generation Networks','PM|Project Management ','FM|Finance Management','EDM|Entreprenuership Development and Management','HRM|Human Resource Management','PEC|Professional Ethics and CSR','RM|Research Methodology','IP|IPR and Patenting','DBM|Digital Business Management','EM|Environmental Management' ];
         }
     }
     if(s1.value=="BSH")
     {
-        if(s1.value=="I(Odd)")
+        if(s2.value=="I(Odd)")
         {
             var optionArray = ['MATHS I|Engg.Maths I' ,'PHY I|Physics I', 'CHEM I|Chemistry I','BEE|BEE', 'MECHANICS|Mechanics' ];
         }
-        else if(s1.value=="II(Even)")
+        else if(s2.value=="II(Even)")
         {
             var optionArray = ['MATHS II|Engg.Maths II' ,'PHY II|Physics II', 'CHEM II|Chemistry II','CP|Computer Programming', 'GRAPHICS|Engg. Graphics' ];
         }

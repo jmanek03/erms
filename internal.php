@@ -172,7 +172,7 @@ if (isset($_POST['submit'])) {
                         <option value="AIDS">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
                         <option value="EXTC">ELECTRONICS AND TELECOMMUNICATION ENGINEERING</option>
                         <option value="BSH">BASIC SCIENCE AND HUMANITIES</option>
-                    </select>
+                    </select><br>
                     <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 290px;">Scheme:</label><br>
                     <input type="year" name="DATE" id="date" required>
                     <select id="scheme" name="SCHEME"required style="margin-left: 83px;">
@@ -208,6 +208,9 @@ if (isset($_POST['submit'])) {
                         <option value="B">B</option>
                         <option value="C">C</option>
                         <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
                     </select>
                     <select name="BATCH" id="batch" style="margin-left: 83px;" required>
                         <option value=""></option>
