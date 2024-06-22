@@ -37,6 +37,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-signin-client_id" content="498440516226-1cmbj8n844mjpumnisgi7k1845ppqps9.apps.googleusercontent.com">
   <link rel="stylesheet" href="signup.css">
+  <script src="firebase.js"></script>
   <link rel="shortcut-icon" type="image/x-icon" href="favicon.ico">
   <title>K. J. SOMAIYA INSTITUTE OF TECHNOLOGY</title>
 </head>
@@ -135,35 +136,7 @@ session_start();
         }
       }
     ?>
-    <?php
-      require_once 'vendor/autoload.php';
-
-      // init configuration
-      $clientID = '498440516226-1cmbj8n844mjpumnisgi7k1845ppqps9.apps.googleusercontent.com';
-      $clientSecret = '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';
-      $redirectUri = 'http://localhost/college-website/userDashboard.php';
-
-      // create Client Request to access Google API
-      $client = new Google_Client();
-      $client->setClientId($clientID);
-      $client->setClientSecret($clientSecret);
-      $client->setRedirectUri($redirectUri);
-      $client->addScope("email");
-      $client->addScope("profile");
-
-      // authenticate code from Google OAuth Flow
-      if (isset($_GET['code'])) {
-        $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-        $client->setAccessToken($token['access_token']);
-
-        // get profile info
-        $google_oauth = new Google_Service_Oauth2($client);
-        $google_account_info = $google_oauth->userinfo->get();
-        $email =  $google_account_info->email;
-        $name =  $google_account_info->name;
-?>
-      <?php } else {
-      ?>
+    
     <div id="signUp-container">
     <h2 class="title">SIGN UP</h2>
     <form class="form" action="signin.php" method="post">
@@ -213,7 +186,7 @@ session_start();
         <span>OR</span>
         <span></span>
       </div>
-      <button class="google-login-button">
+      <button id="google-login-button">
             <img src="google.svg" class="google-icon"></img>
             <span>Log in with Google</span>
       </button>
@@ -236,11 +209,13 @@ session_start();
         changeForm(signUpForm, signInForm);
       })
     </script>
+    <script type="module">
+    import {doUserLogin} from './firebase.js';
+    document.getElementById("google-login-button").addEventListener("click", doUserLogin);
+  </script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="firebase.js"></script>
+    
   </div>
    
-<?php }
-?>
 </body>
 </html>
