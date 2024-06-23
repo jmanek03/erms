@@ -159,12 +159,6 @@ if (isset($_POST['submit'])) {
                 <h1>External Remuneration</h1>
             </div>
             <div class="btn-container btn-toolbar">
-                <input id="fileUpload" type="file" name="Browse" accept=".csv">
-                <button class="Btn btn mr-3" value="Upload" onclick="Upload()">
-                    <svg class="svgIcon" viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path></svg>
-                    <span class="icon2"></span>
-                    <span class="tooltip">Upload</span>
-                </button>
                 <button class="Btn btn mr-3" onclick="csv()">
                     <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
                     <span class="icon2"></span>
@@ -284,8 +278,41 @@ if (isset($_POST['submit'])) {
                     <input type="submit" name='submit' id="submit"><br>
                 </form>
             </div>
-            <span></span>
-            <h1 class="text-center my-5">--Application History--</h1>
+            <div>
+                <form action="" method="post">   
+                <h1 class="text-center my-5">--External Remuneration--</h1>
+                <button type="submit" name="clear" class="noselect" style="float:right;">
+                    <span class="text">Clear</span>
+                    <span class="icon">
+                        <img src="clear.svg">
+                        </img>
+                    </span>
+                </button>
+                <?php
+                    require_once 'database.php';
+
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    // Check if 'confirm_clear' button is submitted
+                    if(isset($_POST['clear'])) {
+                    // Delete query (replace with your table name)
+                    $sql = "DELETE FROM external";
+
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Database cleared successfully!";
+                    } else {
+                        echo "Error clearing database: " . mysqli_error($conn);
+                    }
+                    }
+
+                    mysqli_close($conn);
+                    ?>
+                </form>
+            </div>
             
             <table id="table" class="table table-striped table-hover table-sm">
             

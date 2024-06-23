@@ -238,7 +238,41 @@ if (isset($_POST['submit'])) {
                     <input type="submit" name='submit' id="submit"><br>
                 </form>
             </div>
-            <h1 class="text-center my-5">Staff Remuneration</h1>
+            <div>
+                <form action="" method="post">   
+                <h1 class="text-center my-5">--Application History--</h1>
+                <button type="submit" name="clear" class="noselect" style="float:right;">
+                    <span class="text">Clear</span>
+                    <span class="icon">
+                        <img src="clear.svg">
+                        </img>
+                    </span>
+                </button>
+                <?php
+                    require_once 'database.php';
+
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    // Check if 'confirm_clear' button is submitted
+                    if(isset($_POST['clear'])) {
+                    // Delete query (replace with your table name)
+                    $sql = "DELETE FROM staff";
+
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Database cleared successfully!";
+                    } else {
+                        echo "Error clearing database: " . mysqli_error($conn);
+                    }
+                    }
+
+                    mysqli_close($conn);
+                    ?>
+                </form>
+            </div>
             <table id="table" class="table table-striped table-hover">
                 <thead>
                     <tr>
