@@ -150,13 +150,7 @@ if (isset($_POST['submit'])) {
             <div class="home">
                 <h1>Internal Remuneration</h1>
             </div>
-            <div class="btn-container btn-toolbar">
-                <button class="Btn btn mr-3" onclick="csv()">
-                    <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
-                    <span class="icon2"></span>
-                    <span class="tooltip">Download</span>
-                </button>
-            </div>
+            
             <div class="container">
                 <form class="form" action=internal.php method="post" name="remuneration-form">
                 <label for="Remuneration">Department:</label><br>
@@ -257,45 +251,11 @@ if (isset($_POST['submit'])) {
                     <input type="submit" name='submit' id="submit"><br>
                 </form>
             </div>
-            <div>
-                <div>
-                <form action="" method="post">   
-                <h1 class="text-center my-5">--Internal Remuneration--</h1>
-                <button type="submit" name="clear" class="noselect" style="float:right;">
-                    <span class="text">Clear</span>
-                    <span class="icon">
-                        <img src="clear.svg">
-                        </img>
-                    </span>
-                </button>
-                <?php
-                    require_once 'database.php';
-
-                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
-
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-
-                    // Check if 'confirm_clear' button is submitted
-                    if(isset($_POST['clear'])) {
-                    // Delete query (replace with your table name)
-                    $sql = "DELETE FROM internal";
-
-                    if (mysqli_query($conn, $sql)) {
-                        echo "Database cleared successfully!";
-                    } else {
-                        echo "Error clearing database: " . mysqli_error($conn);
-                    }
-                    }
-
-                    mysqli_close($conn);
-                    ?>
-                </form>
-            </div>
-            <table id="table" class="table table-striped table-hover">
+            <h1 class="h-scroll-tables">INTERNAL REMUNERATION</h1>
+            <table class="h-scroll-tables">
+            <caption>APPLICATION HISTORY</caption>
                 <thead>
-                    <tr>
+                    <tr class="header">
                     <th scope="col">Department</th>
                     <th scope="col">Academic Year</th>
                     <th scope="col">Scheme</th>
@@ -352,6 +312,47 @@ if (isset($_POST['submit'])) {
                 </tbody>
 
             </table>
+            <div>
+                <form action="" method="post">   
+                <button type="submit" name="clear" class="noselect" style="float:right;">
+                    <span class="text">Clear</span>
+                    <span class="icon">
+                        <img src="clear.svg">
+                        </img>
+                    </span>
+                </button>
+                <?php
+                    require_once 'database.php';
+
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    // Check if 'confirm_clear' button is submitted
+                    if(isset($_POST['clear'])) {
+                    // Delete query (replace with your table name)
+                    $sql = "DELETE FROM internal";
+
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Database cleared successfully!";
+                    } else {
+                        echo "Error clearing database: " . mysqli_error($conn);
+                    }
+                    }
+
+                    mysqli_close($conn);
+                    ?>
+                </form>
+                <div class="btn-container btn-toolbar">
+                    <button class="Btn btn mr-3" onclick="csv()">
+                        <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                        <span class="icon2"></span>
+                        <span class="tooltip">Download</span>
+                    </button>
+                </div>
+            </div>
             </div>
             
             <script src="admin.js"></script>
