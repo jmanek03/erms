@@ -79,6 +79,8 @@ session_start();
               header("Location: userDashboard.php");
           } elseif ($userType == "admin") {
               header("Location: adminDashboard.php");
+          } elseif($userType == "superadmin"){
+              header("Location: superadmin.php");
           } else {
               die();
           }
