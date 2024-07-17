@@ -151,13 +151,6 @@ if (isset($_POST['submit'])) {
             <div class="home">
                 <h1>External Remuneration</h1>
             </div>
-            <div class="btn-container btn-toolbar">
-                <button class="Btn btn mr-3" onclick="csv()">
-                    <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
-                    <span class="icon2"></span>
-                    <span class="tooltip">Download</span>
-                </button>
-            </div>
             <div class="container" id="dvCsv">
                 <form class="form" action="externalESE.php" method="post" name="remuneration-form">
                     <label for="Remuneration">Name of External Examiner:</label><br>
@@ -238,47 +231,11 @@ if (isset($_POST['submit'])) {
                     <input type="submit" name='submit' id="submit"><br>
                 </form>
             </div>
-            <span></span>
-            <div>
-                <form action="" method="post">   
-                <h1 class="text-center my-5">--Application History--</h1>
-                <button type="submit" name="clear" class="noselect" style="float:right;">
-                    <span class="text">Clear</span>
-                    <span class="icon">
-                        <img src="clear.svg">
-                        </img>
-                    </span>
-                </button>
-                <?php
-                    require_once 'database.php';
-
-                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
-
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-
-                    // Check if 'confirm_clear' button is submitted
-                    if(isset($_POST['clear'])) {
-                    // Delete query (replace with your table name)
-                    $sql = "DELETE FROM externalese";
-
-                    if (mysqli_query($conn, $sql)) {
-                        echo "Database cleared successfully!";
-                    } else {
-                        echo "Error clearing database: " . mysqli_error($conn);
-                    }
-                    }
-
-                    mysqli_close($conn);
-                    ?>
-                </form>
-            </div>
-            
-            <table id="table" class="table table-striped table-hover table-sm">
-            
+            <h1 class="h-scroll-tables">EXTERNAL REMUNERATION</h1>
+            <table class="h-scroll-tables">
+            <caption>APPLICATION HISTORY</caption>
                 <thead>
-                    <tr>
+                    <tr class="header">
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">College</th>
@@ -347,16 +304,45 @@ if (isset($_POST['submit'])) {
             </table>
             
             <div>
-                <!-- <button id="btn_print" type="button" onclick="printPage()">
-                    <span id="button__text">Print Page</span>
-                    <span id="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
-                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
-                        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
-                        </svg>
+                <form action="" method="post">   
+                <button type="submit" name="clear" class="noselect" style="float:right;">
+                    <span class="text">Clear</span>
+                    <span class="icon">
+                        <img src="clear.svg">
+                        </img>
                     </span>
                 </button>
-                <br><br> -->
-                
+                <?php
+                    require_once 'database.php';
+
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
+
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    // Check if 'confirm_clear' button is submitted
+                    if(isset($_POST['clear'])) {
+                    // Delete query (replace with your table name)
+                    $sql = "DELETE FROM externalese";
+
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Database cleared successfully!";
+                    } else {
+                        echo "Error clearing database: " . mysqli_error($conn);
+                    }
+                    }
+
+                    mysqli_close($conn);
+                    ?>
+                </form>
+                <div class="btn-container btn-toolbar">
+                    <button class="Btn btn mr-3" onclick="csv()">
+                        <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                        <span class="icon2"></span>
+                        <span class="tooltip">Download</span>
+                    </button>
+                </div>
             </div>
             <script src="admin.js"></script>
         </div>
