@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" type="text/css" href="teacher.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -86,15 +87,19 @@
                     </div>
                 </div>
             </nav>
-            <div id="home">
-            <table id="table" class="table table-striped table-hover table-sm">
-            
+            <div class="home">
+                <h1>USER INFORMATION</h1>
+            </div>
+            <h1 class="h-scroll-tables">USERS</h1>
+            <table class="h-scroll-tables">
             <thead>
-                <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">User Type</th>
+                <tr class="header">
+                <th scope="col">FIRST NAME</th>
+                <th scope="col">LAST NAME</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">USER TYPE</th>
+                <th scope="col">EDIT</th>
+                <th scope="col">DELETE </th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -118,26 +123,18 @@
                 <td>'.$data["lastName"].'</td>
                 <td>'.$data["email"].'</td>
                 <td>'.$data["userType"].'</td>
+                <td><button class="editDelete" href="edit.php"><span class="lable">Edit</span></button></td>
+                <td><button class="editDelete" href="delete.php"><span class="lable">Delete</span></button></td>
                 </tr>';
             
         }
             
         ?>
-            </tbody>
+            
+        </tbody>
 
         </table>
         </div>
-        <?php
-					require_once 'database.php';
-					$query=mysqli_query($conn,"SELECT * from signup");
-					while($row=mysqli_fetch_array($query))
-                        ?>
-						<tr>
-							<td>
-								<a href="edit.php">Edit</a>
-								<a href="delete.php">Delete</a>
-							</td>
-						</tr>
                         
 
 

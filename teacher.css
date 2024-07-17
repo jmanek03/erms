@@ -243,3 +243,29 @@ td {
     display: inline-block;
     width: 100%;
     }
+    .editDelete {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 12px;
+      gap: 2px;
+      height: 25px;
+      width: 60px;
+      border: none;
+      background: #923434;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    
+    .lable {
+      line-height: 22px;
+      font-size: 15px;
+      color: #eee;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    .editDelete:hover {
+      background: #923434;
+    }
+    
