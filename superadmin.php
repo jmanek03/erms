@@ -123,8 +123,8 @@
                 <td>'.$data["lastName"].'</td>
                 <td>'.$data["email"].'</td>
                 <td>'.$data["userType"].'</td>
-                <td><button class="editDelete" href="edit.php"><span class="lable">Edit</span></button></td>
-                <td><button class="editDelete" href="delete.php"><span class="lable">Delete</span></button></td>
+                <td><a href="edit.php?id=<?php echo $id; ?>">Edit</a></td>
+                <td><a href="delete.php?id=<?php echo $id; ?>">Delete</a></td>
                 </tr>';
             
         }
