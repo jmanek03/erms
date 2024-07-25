@@ -31,31 +31,49 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="userDashboard.php">Home</a>
+                    <a href="sadminDashboard.php">Home</a>
                 </li>
                 <li>
-                    <a href="aboutUser.php">About</a>
-                </li>
-                <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
+                    <a href="aboutSAdmin.php">About</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-
-                        <a href="#teacherSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
-                        <ul class="collapse list-unstyled" id="teacherSubmenu">
+                    <a href="#ISSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">In-Sem</a>
+                        <ul class="collapse list-unstyled" id="ISSubmenu">
+                            <a href="#facultySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
+                            <ul class="collapse list-unstyled" id="facultySubmenu">
+                                <li>
+                                    <a href="externalSA.php">External</a>
+                                </li>
+                                <li>
+                                    <a href="internalSA.php">Internal</a>
+                                </li>
+                            </ul>
                             <li>
-                              <a href="externalInfo.php">External</a>
-                            </li>
-                            <li>
-                              <a href="internalInfo.php">Internal</a>
+                                <a href="staffSA.php">Staff</a>
                             </li>
                         </ul>
-                        <li>
-                            <a href="staffInfo.php">Staff</a>
-                        </li>
+                        <a href="#ESESubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">End-Sem</a>
+                        <ul class="collapse list-unstyled" id="ESESubmenu">
+                            <a href="#facultySubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
+                            <ul class="collapse list-unstyled" id="facultySubmenu1">
+                                <li>
+                                    <a href="externalESESA.php">External</a>
+                                </li>
+                                <li>
+                                    <a href="internalESESA.php">Internal</a>
+                                </li>
+                            </ul>
+                            <li>
+                                <a href="staffESESA.php">Staff</a>
+                            </li>
+                        </ul>
                     </ul>
-                    </li>
+                </li>
                 <li>
-                    <a href="contactUser.php">Contact</a>
+                    <a href="contactSAdmin.php">Contact</a>
+                </li>
+                <li>
+                    <a href="superadmin.php">User Information</a>
                 </li>
             </ul>
         </nav>
