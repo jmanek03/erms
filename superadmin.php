@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -94,6 +93,7 @@
             <table class="h-scroll-tables">
             <thead>
                 <tr class="header">
+                <th scope="col">USER ID</th>
                 <th scope="col">FIRST NAME</th>
                 <th scope="col">LAST NAME</th>
                 <th scope="col">EMAIL</th>
@@ -115,16 +115,16 @@
                     echo "Could not successfully run query ($sql) from DB: " . mysqli_error($conn);
                     exit;
                 }
-                
-                while( $data=mysqli_fetch_array($result, MYSQLI_ASSOC) ){
+                while( $data=mysqli_fetch_assoc($result) ){
                 echo
                 '<tr>
+                <td>'.$data["user_id"].'</td>
                 <td>'.$data["firstName"].'</td>
                 <td>'.$data["lastName"].'</td>
                 <td>'.$data["email"].'</td>
                 <td>'.$data["userType"].'</td>
-                <td><a href="edit.php?id=<?php echo $id; ?>">Edit</a></td>
-                <td><a href="delete.php?id=<?php echo $id; ?>">Delete</a></td>
+                <td><a href="edit.php?id='.$data["user_id"].'">Edit</a></td>
+                <td><a href="delete.php?id='.$data["user_id"].'">Delete</a></td>
                 </tr>';
             
         }
