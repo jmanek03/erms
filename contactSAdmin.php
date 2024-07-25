@@ -16,7 +16,7 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/4ade6a7b85.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -30,10 +30,10 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="adminDashboard.php">Home</a>
+                    <a href="sadminDashboard.php">Home</a>
                 </li>
                 <li>
-                    <a href="aboutAdmin.php">About</a>
+                    <a href="aboutSAdmin.php">About</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                     <a href="#ISSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">In-Sem</a>
@@ -41,14 +41,14 @@
                             <a href="#facultySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                             <ul class="collapse list-unstyled" id="facultySubmenu">
                                 <li>
-                                    <a href="external.php">External</a>
+                                    <a href="externalSA.php">External</a>
                                 </li>
                                 <li>
-                                    <a href="internal.php">Internal</a>
+                                    <a href="internalSA.php">Internal</a>
                                 </li>
                             </ul>
                             <li>
-                                <a href="staff.php">Staff</a>
+                                <a href="staffSA.php">Staff</a>
                             </li>
                         </ul>
                         <a href="#ESESubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">End-Sem</a>
@@ -56,20 +56,23 @@
                             <a href="#facultySubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                             <ul class="collapse list-unstyled" id="facultySubmenu1">
                                 <li>
-                                    <a href="externalESE.php">External</a>
+                                    <a href="externalESESA.php">External</a>
                                 </li>
                                 <li>
-                                    <a href="internalESE.php">Internal</a>
+                                    <a href="internalESESA.php">Internal</a>
                                 </li>
                             </ul>
                             <li>
-                                <a href="staffESE.php">Staff</a>
+                                <a href="staffESESA.php">Staff</a>
                             </li>
                         </ul>
                     </ul>
                 </li>
                 <li>
-                    <a href="contactAdmin.php">Contact</a>
+                    <a href="contactSAdmin.php">Contact</a>
+                </li>
+                <li>
+                    <a href="superadmin.php">User Information</a>
                 </li>
             </ul>
         </nav>
@@ -79,6 +82,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
+
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
                         <span></span>
                         <span></span>
@@ -101,45 +105,50 @@
                 </div>
             </nav>
             <div class="home">
-                <h1>Admin Dashboard</h1>
+                <h1>Contact</h1>
             </div>
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://kjsit.somaiya.edu.in/assets/kjsieit/images/infra/blg.jpg" alt="First slide">
+            <div class="card-deck">
+                <div class="card">
+                    <h4 class="card-title text-center">GUIDED BY</h4>
+                    <img class="card-img-top" src="..." alt="Card image">
+                    <div class="card-body">
+                        <a href="mailto:jayashreek@somaiya.edu "><img src="email_black_24dp.svg"> jayashreek@somaiya.edu</a>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="https://kjsit.somaiya.edu.in/assets/kjsieit/images/infra/two.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="https://www.somaiya.edu/upload_file/images20/images/New%20Project%20(60).jpg" alt="Third slide">
+                    <div class="card-footer">
+                        <small class="text-muted">DR. JAYASHREE KHANAPURI</small>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <div class="description-container">
-            <p>This second Engineering College established by the Somaiya Trust in the year 2001, at Ayurvihar campus, Sion, was initiated with a first batch of 180 undergraduate students and three branches in Engineering—namely Electronics and Telecommunication Engineering, Computer Engineering, and Information Technology.</p>
-
-            <p>Subsequently, The Electronics Department was founded in the year 2004 and since then the Institute has strived towards providing the necessary dynamism to all its stakeholders in the light of expanding knowledge and changing socio-economic requirements of the modern society.</p>
-                    
-            <p>KJSIT is recognized by the All India Council for Technical Education (AICTE) & the Govt. of Maharashtra with a permanent affiliation to the University of Mumbai (UOM). It is accredited with “A” Grade and 3.21 CGPA in its 1 st cycle for 5 years duration by National Assessment and Accreditation Council (NAAC) and it’s three programs - Computer Engineering, Electronics and Telecommunication Engineering and Electronics Engineering - are accredited by National Board of Accreditation.</p>
-                    
-            <p>Moreover, KJSIT has introduced a Post Graduate engineering program in Artificial Intelligence from the Academic Year 2019-20.
-                    
-            Additionally, an undergraduate engineering program - Artificial Intelligence and Data Science - has been offered by KJSIT from the academic year 2020-21 with the intake capacity of 60 seats leading the total intake increased to 360. KJSIT is constantly identifying and developing latest and nascent technologies such as Artificial Intelligence, Machine Learning, Deep Learning and Block Chain Technology, etc. for enhancing student learning and growth.
-            </p>
-                    <a href="https://kjsit.somaiya.edu.in/" style="color: blue;"><i class="fa-solid fa-link"></i> KJ Somaiya Institute Of Technology</a>
+                <div class="card">
+                    <h4 class="card-title text-center">DEVELOPED BY</h4>
+                    <div class="text-center">
+                        <img class="card-img-top rounded-circle mb-3" style="width:170px;height:200px;" src=".." alt="Card image">
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Front-End Developer <span class="badge badge-dark">INTERMEDIATE</span></p>
+                        <a href="mailto:j.manek@somaiya.edu "><img src="email_black_24dp.svg"> j.manek@somaiya.edu</a><br><br>
+                        <a href="https://www.linkedin.com/in/jay-manek-840b15228/"><img src="linkedin.svg"> Jay Manek</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">JAY BHAVESH MANEK</small>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="card-title text-center">DEVELOPED BY</h4>
+                    <div class="text-center">
+                        <img class="card-img-top rounded-circle mb-3" style="width:170px;height:200px;" src="..." alt="Card image">
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Back-End Developer <span class="badge badge-dark">INTERMEDIATE</span></p>
+                        <a href="mailto:arrya.bhaik@somaiya.edu "><img src="email_black_24dp.svg"> arrya.bhaik@somaiya.edu</a><br><br>
+                        <a href="https://www.linkedin.com/in/arrya-bhaik-283518258/"><img src="linkedin.svg"> Arrya Bhaik</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">ARRYA RAKESH BHAIK</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->

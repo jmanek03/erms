@@ -16,7 +16,7 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/4ade6a7b85.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -30,10 +30,10 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="adminDashboard.php">Home</a>
+                    <a href="sadminDashboard.php">Home</a>
                 </li>
                 <li>
-                    <a href="aboutAdmin.php">About</a>
+                    <a href="aboutSAdmin.php">About</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Remuneration</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                     <a href="#ISSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">In-Sem</a>
@@ -41,14 +41,14 @@
                             <a href="#facultySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                             <ul class="collapse list-unstyled" id="facultySubmenu">
                                 <li>
-                                    <a href="external.php">External</a>
+                                    <a href="externalSA.php">External</a>
                                 </li>
                                 <li>
-                                    <a href="internal.php">Internal</a>
+                                    <a href="internalSA.php">Internal</a>
                                 </li>
                             </ul>
                             <li>
-                                <a href="staff.php">Staff</a>
+                                <a href="staffSA.php">Staff</a>
                             </li>
                         </ul>
                         <a href="#ESESubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">End-Sem</a>
@@ -56,20 +56,23 @@
                             <a href="#facultySubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Faculty</a>
                             <ul class="collapse list-unstyled" id="facultySubmenu1">
                                 <li>
-                                    <a href="externalESE.php">External</a>
+                                    <a href="externalESESA.php">External</a>
                                 </li>
                                 <li>
-                                    <a href="internalESE.php">Internal</a>
+                                    <a href="internalESESA.php">Internal</a>
                                 </li>
                             </ul>
                             <li>
-                                <a href="staffESE.php">Staff</a>
+                                <a href="staffESESA.php">Staff</a>
                             </li>
                         </ul>
                     </ul>
                 </li>
                 <li>
-                    <a href="contactAdmin.php">Contact</a>
+                    <a href="contactSAdmin.php">Contact</a>
+                </li>
+                <li>
+                    <a href="superadmin.php">User Information</a>
                 </li>
             </ul>
         </nav>
@@ -135,7 +138,7 @@
                     
             Additionally, an undergraduate engineering program - Artificial Intelligence and Data Science - has been offered by KJSIT from the academic year 2020-21 with the intake capacity of 60 seats leading the total intake increased to 360. KJSIT is constantly identifying and developing latest and nascent technologies such as Artificial Intelligence, Machine Learning, Deep Learning and Block Chain Technology, etc. for enhancing student learning and growth.
             </p>
-                    <a href="https://kjsit.somaiya.edu.in/" style="color: blue;"><i class="fa-solid fa-link"></i> KJ Somaiya Institute Of Technology</a>
+                    <a href="https://kjsit.somaiya.edu.in/" style="color: blue;"> KJ Somaiya Institute Of Technology</a>
             </div>
         </div>
     </div>
