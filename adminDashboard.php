@@ -16,7 +16,7 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/4ade6a7b85.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -135,7 +135,7 @@
                     
             Additionally, an undergraduate engineering program - Artificial Intelligence and Data Science - has been offered by KJSIT from the academic year 2020-21 with the intake capacity of 60 seats leading the total intake increased to 360. KJSIT is constantly identifying and developing latest and nascent technologies such as Artificial Intelligence, Machine Learning, Deep Learning and Block Chain Technology, etc. for enhancing student learning and growth.
             </p>
-                    <a href="https://kjsit.somaiya.edu.in/" style="color: blue;"> KJ Somaiya Institute Of Technology</a>
+                    <a href="https://kjsit.somaiya.edu.in/" style="color: blue;"><i class="fa-solid fa-link"></i> KJ Somaiya Institute Of Technology</a>
             </div>
         </div>
     </div>
