@@ -6,10 +6,11 @@ session_start();
     $email = $_POST["email"];
     $password = $_POST["password"]; 
     $password_confirmation = $_POST["confirm_password"];
+    $dept=$_POST["dept"];
 
     $errors = array();
     
-    if (empty($firstname) OR empty($lastname) OR empty($email) OR empty($password) OR empty($password_confirmation)){
+    if (empty($firstname) OR empty($lastname) OR empty($email) OR empty($password) OR empty($password_confirmation) OR empty($dept)){
       array_push($errors,"All fields are required");
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -96,7 +97,7 @@ session_start();
         $password = $_POST["password"]; 
         $passwordConfirmation = $_POST["confirm_password"];
         $userType = "user";
-
+        $dept=$_POST["dept"];
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $errors = array();
         
@@ -125,11 +126,11 @@ session_start();
           } 
         }
         else{
-          $sql = "INSERT INTO signup (firstName, lastName, email, password, userType) VALUES (?,?,?,?,?)";
+          $sql = "INSERT INTO signup (firstName, lastName, email, password, userType, dept) VALUES (?,?,?,?,?,?)";
           $stmt = mysqli_stmt_init($conn);
           $prepareStmt = mysqli_stmt_prepare($stmt,$sql);
           if ($prepareStmt){
-            mysqli_stmt_bind_param($stmt,"sssss",$firstName,$lastName,$email,$passwordHash,$userType);
+            mysqli_stmt_bind_param($stmt,"ssssss",$firstName,$lastName,$email,$passwordHash,$userType, $dept );
             mysqli_stmt_execute($stmt);
           } 
           else{
@@ -166,6 +167,10 @@ session_start();
     <label>
         <input required="" placeholder="" type="password" class="input" name="confirm_password">
         <span>Confirm password</span>
+    </label>
+    <label>
+        <input required="" placeholder="" type="text" class="input" name="dept">
+        <span>Department</span>
     </label>
     <button class="sign-in-btn" type="submit" name="submit" id="sign-up-btn">SIGN UP</button>
     </form>

@@ -187,6 +187,26 @@ if (isset($_POST['submit'])) {
                         <option value="Tika Singh">Tika Singh</option>
                         <option value="Vimal Pawar">Vimal Pawar</option>
                         <option value="Manjula Jadhav">Manjula Jadhav</option>
+                        <option value="Sudir Kasar">Sudir Kasar</option>
+                        <option value="Kavita Pashte">Kavita Pashte</option>
+                        <option value="Sachin Dhale">Sachin Dhale</option>
+                        <option value="Bharati Sansare">Bharati Sansare</option>
+                        <option value="Suresh Ubale">Suresh Ubale</option>
+                        <option value="Prabhu Jadhav">Prabhu Jadhav</option>
+                        <option value="Kiran Hande">Kiran Hande</option>
+                        <option value="Pallavi Chavda">Pallavi Chavda</option>
+                        <option value="Mohd Raza Ansari ">Mohd Raza Ansari </option>
+                        <option value="Kavita Chimankare">Kavita Chimankare</option>
+                        <option value="Vishal Khandekar">Vishal Khandekar</option>
+                        <option value="Dinesh Paulekar">Dinesh Paulekar</option>
+                        <option value="Narendra Chandeliya">Narendra Chandeliya</option>
+                        <option value="Nitin Urankar">Nitin Urankar</option>
+                        <option value="Santosh Jadhav">Santosh Jadhav</option>
+                        <option value="Anand Kandalkar">Anand Kandalkar</option>
+                        <option value="Milind Thorat">Milind Thorat</option>
+                        <option value="Kalpana Bhamare">Kalpana Bhamare</option>
+                        <option value="Kishor Makwana">Kishor Makwana</option>
+                        <option value="Rajesh Jadav">Rajesh Jadav</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Email:</label><br>
