@@ -155,7 +155,7 @@ if (isset($_POST['submit'])) {
                 <form class="form" action=internal.php method="post" name="remuneration-form">
                 <label for="Remuneration">Department:</label><br>
                     <select name="DEPARTMENT" id="department" required>
-                        <option value="">--Choose a Deaprtment--</option>
+                        <option value="">--Choose a Department--</option>
                         <option value="COMPS">COMPUTER ENGINEERING</option>
                         <option value="IT">INFORMATION TECHNOLOGY</option>
                         <option value="AIDS">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
