@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="teacher.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -87,11 +88,12 @@
                 </div>
             </nav>
             <div class="home">
-                <span></span><h1>Internal Remuneration</h1>
+                <h1>Internal Remuneration</h1>
             </div>
-            <table class="table table-striped table-hover">
+            <h1 class="h-scroll-tables">INTERNAL REMUNERATION</h1>
+            <table class="h-scroll-tables">
                 <thead>
-                    <tr>
+                    <tr class="header">
                     <th scope="col">Academic Year</th>
                     <th scope="col">Scheme</th>
                     <th scope="col">Semester</th>
@@ -99,6 +101,7 @@
                     <th scope="col">Division</th>
                     <th scope="col">Batch</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Exam</th>
                     <th scope="col">Particular</th>
                     <th scope="col">Max. Marks</th>
@@ -109,10 +112,11 @@
                 <tbody class="table-group-divider">
                 <?php 
                     require_once 'database.php';
+                    $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql="SELECT * FROM internal WHERE email= '$email'";
+                    $sql="SELECT * FROM internal";
                     $result=mysqli_query($conn,$sql);
                     if (!$result) {
                         echo "Could not successfully run query ($sql) from DB: " . mysqli_error($conn);
@@ -129,6 +133,7 @@
                     <td>'.$data["division"].'</td>
                     <td>'.$data["batch"].'</td>
                     <td>'.$data["t_name"].'</td>
+                    <td>'.$data["email"].'</td>
                     <td>'.$data["exam"].'</td> 
                     <td>'.$data["particular"].'</td> 
                     <td>'.$data["max_marks"].'</td>  
