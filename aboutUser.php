@@ -93,11 +93,11 @@
                 <div class="dept_info">
                     <h2>Department of Electronics and Telecommunication Engineering</h2>
                     <ul class="new">
-                        <li>The Department of Electronics and Telecommunication Engineering has a rich history of academic excellence and research contributions. 
+                        <p>The Department of Electronics and Telecommunication Engineering has a rich history of academic excellence and research contributions. 
                             Over the years, we have consistently adapted to technological advancements and industry demands, ensuring that our students receive a cutting-edge education.
                             The department is at the forefront of cutting-edge research. 
                             Our faculty and students are actively involved in pioneering projects that address real-world challenges and drive innovation in fields like wireless communication, embedded systems, and IoT.
-                        </li>
+                        </p>
                     </ul>
                     <h3>Strengths of the department include:</h3>
                     <ul class='new'>

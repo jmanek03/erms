@@ -5,10 +5,7 @@ class csvExport {
       if (!header && this.rows[0].querySelectorAll("th").length) {
         this.rows.shift();
       }
-      // console.log(this.rows);
-      // console.log(this._longestRow());
     }
-  
     exportCsv() {
       const lines = [];
       const ncols = this._longestRow();

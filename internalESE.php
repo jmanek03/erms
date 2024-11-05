@@ -176,7 +176,7 @@ if (isset($_POST['submit'])) {
                     <br><hr>
                     <label for="Remuneration">Subject:</label><br>
                     <select name="SUBJECT" id="subject" required>
-                        <option value=""></option>
+                        <option value="sbl">sbl</option>
                     </select>
                     <br><hr>
                     <label for="Remuneration">Division:</label><label for="Remuneration" style="margin-left: 330px;">Batch:</label><br>

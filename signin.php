@@ -137,9 +137,9 @@ session_start();
           else{
             die("Something went wrong!");
           }
-          $query = "INSERT INTO $dept (user_id,firstName, lastName, email, password, userType, dept) VALUES (?,?,?,?,?,?,?)";
+          $query = "INSERT INTO $dept (user_id,firstName, lastName, email, password, userType) VALUES (?,?,?,?,?,?)";
           $stmt = mysqli_prepare($conn, $query);
-          mysqli_stmt_bind_param($stmt, "issssss",$user_id, $firstName, $lastName, $email, $passwordHash, $userType, $dept);
+          mysqli_stmt_bind_param($stmt, "isssss",$user_id, $firstName, $lastName, $email, $passwordHash, $userType);
           mysqli_stmt_execute($stmt);
           
         }
@@ -174,15 +174,16 @@ session_start();
         <input required="" placeholder="" type="password" class="input" name="confirm_password">
         <span>Confirm password</span>
     </label>
-    <select name="dept" id="department" required>
-      <option value="">--Choose a Department--</option>
-      <option value="comps">COMPUTER ENGINEERING</option>
-      <option value="it">INFORMATION TECHNOLOGY</option>
-      <option value="aids">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
-      <option value="extc">ELECTRONICS AND TELECOMMUNICATION ENGINEERING</option>
-      <option value="bsh">BASIC SCIENCE AND HUMANITIES</option>
-      <option value="ExamCell">EXAMINATION CELL</option>
-    </select>  
+      <select name="dept" id="department" class="input" required>
+        <option value="">--Department--</option>
+        <option value="comps">COMPUTER ENGINEERING</option>
+        <option value="it">INFORMATION TECHNOLOGY</option>
+        <option value="aids">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
+        <option value="extc">ELECTRONICS AND TELECOMMUNICATION ENGINEERING</option>
+        <option value="bsh">BASIC SCIENCE AND HUMANITIES</option>
+        <option value="ExamCell">EXAMINATION CELL</option>
+      </select>
+      
     <button class="sign-in-btn" type="submit" name="submit" id="sign-up-btn">SIGN UP</button>
     </form>
     </div>

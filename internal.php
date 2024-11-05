@@ -153,7 +153,7 @@ if (isset($_POST['submit'])) {
             
             <div class="container">
                 <form class="form" action=internal.php method="post" name="remuneration-form">
-                <label for="Remuneration">Department:</label><br>
+                <label for="department">Department:</label><br>
                     <select name="DEPARTMENT" id="department" required>
                         <option value="">--Choose a Department--</option>
                         <option value="COMPS">COMPUTER ENGINEERING</option>
@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
                         <option value="EXTC">ELECTRONICS AND TELECOMMUNICATION ENGINEERING</option>
                         <option value="BSH">BASIC SCIENCE AND HUMANITIES</option>
                     </select><br>
-                    <label for="Remuneration">Academic Year:</label><label for="Remuneration" style="margin-left: 290px;">Scheme:</label><br>
+                    <label for="date">Academic Year:</label><label for="scheme" style="margin-left: 290px;">Scheme:</label><br>
                     <input type="year" name="DATE" id="date" required>
                     <select id="scheme" name="SCHEME"required style="margin-left: 83px;">
                         <option value="">--Choose a Scheme--</option>
@@ -172,7 +172,7 @@ if (isset($_POST['submit'])) {
                         <option value="SCHEME-III">III</option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Semester:</label><br>
+                    <label for="semester">Semester:</label><br>
                     <select name="SEMESTER" id="semester" required onchange="populate('department',this.id,'subject')">
                         <option value="">--Choose a Semester--</option>
                         <option value="I(Odd)">I(Odd)</option>
@@ -185,12 +185,12 @@ if (isset($_POST['submit'])) {
                         <option value="VIII(Even)">VIII(Even)</option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Subject:</label><br>
+                    <label for="subject">Subject:</label><br>
                     <select name="SUBJECT" id="subject" required>
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Division:</label><label for="Remuneration" style="margin-left: 330px;">Batch:</label><br>
+                    <label for="division">Division:</label><label for="batch" style="margin-left: 330px;">Batch:</label><br>
                     <select id="division" name="DIVISION" required onchange="get(this.id,'batch')">
                         <option value="">--Choose a Division--</option>
                         <option value="A">A</option>
@@ -205,7 +205,7 @@ if (isset($_POST['submit'])) {
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Faculty Name:</label><br>
+                    <label for="teacher">Faculty Name:</label><br>
                     <select id="teacher" name="TEACHER">
                         <option value="">--Select--</option>
                         <option value="Sarita Ambadekar">Sarita Ambadekar</option>
@@ -283,10 +283,10 @@ if (isset($_POST['submit'])) {
                         <option value="Archana Kshirsagar">Archana Kshirsagar</option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Email:</label><br>
+                    <label for="email">Email:</label><br>
                     <input type="email" name="EMAIL" id="email" >
                     <br><hr>
-                    <label for="Remuneration">Exam:</label><label for="Remuneration" style="margin-left: 350px;">Choose a Particular:</label><br>
+                    <label for="exam">Exam:</label><label for="particulars" style="margin-left: 350px;">Choose a Particular:</label><br>
                     <select name="EXAM" id="exam" required onchange="select(this.id,'particulars')">
                         <option value="">--Select--</option>
                         <option value="Regular">Regular</option>
@@ -298,17 +298,17 @@ if (isset($_POST['submit'])) {
                         <option value=""></option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Number of Students:</label><br>
+                    <label for="noofstudents">Number of Students:</label><br>
                     <input type="students" name="NO_OF_STUDENTS" id="noofstudents" oninput="calculateTotal()" required>
                     <br><hr>
-                    <label for="Remuneration">Rs. Per Student:</label><br>
+                    <label for="rsperstudent">Rs. Per Student:</label><br>
                     <select id="rsperstudent" name="RS_PER_STUDENT" oninput="calculateTotal()" onchange="set(this.id,'max-marks')" required>
                         <option value="">--Rs. Per Student--</option>
                         <option value="8">8</option>
                         <option value="12">12</option>
                     </select>
                     <br><hr>
-                    <label for="Remuneration">Maximum Marks:</label><br>
+                    <label for="max-marks">Maximum Marks:</label><br>
                     <select id="max-marks" name="MARKS" required>
                         <option value="">--Maximum Marks--</option>
                         <option value="60">25</option>
@@ -319,7 +319,7 @@ if (isset($_POST['submit'])) {
 
                     </select>
                     <br><hr style="width: 640px; color: rgb(0, 0, 0);">
-                    <label for="Remuneration">TOTAL:</label><br>
+                    <label for="total">TOTAL:</label><br>
                     <input type="total" name="TOTAL" id="total" required>
                     <input type="submit" name='submit' id="submit"><br>
                 </form>
